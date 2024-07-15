@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Usamos flexbox en el body para centrar el contenedor en pantalla*/
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 10vh;
+    background-color: rgb(108, 59, 59); /*estaria guay meter una foto de fondo rollo un paisaje*/
+}
+
+/* Configuramos container con grid: para distribuir los elementos en varias filas*/
+.container {
+    display: grid;
+    grid-template-columns: repeat(6, 8rem);  /* 4 columnas */
+    grid-template-rows: repeat(4, 14.5rem);  /* 4 filas */
+    gap: 1rem;  /* Espacio entre cartas */
+}
+
+
+/* A .card le asignamos ancho y alto definido y estilo, además de centrar el texto dentro de cada carta  */
+.card {
+    width: 8rem;
+    height: 14.5rem;
+    background-color: #8e9a8e; /*estaria guay que fuese una foto de la parte de atras de una carta real*/
+    color: rgba(88, 83, 83, 0.619);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    border-radius: 0.5rem;
+}
