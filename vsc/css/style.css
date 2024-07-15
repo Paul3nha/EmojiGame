@@ -14,11 +14,30 @@ body {
     background-color: rgb(108, 59, 59); /*estaria guay meter una foto de fondo rollo un paisaje*/
 }
 
+
+header {
+    grid-area: head;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    
+}
+
 /* Configuramos container con grid: para distribuir los elementos en varias filas*/
 .container {
+    grid-area: card;
     display: grid;
-    grid-template-columns: repeat(6, 8rem);  /* 4 columnas */
-    grid-template-rows: repeat(4, 14.5rem);  /* 4 filas */
+    width: 100%; /*no estoy segura*/
+    height: 250px; /*no estoy segura*/
+    grid-template-areas:  /*definimos la cuadricula*/
+    "head" "head" "head" "head"
+    "card" "card" "card" "card"
+    "card" "card" "card" "card"
+    "card" "card" "card" "card"
+    "card" "card" "card" "card"
+    "footer" "footer" "footer" "footer";
+
+    grid-template-columns: repeat(4, 8rem);  /* 4 columnas */
+    grid-template-rows: repeat(6, 14.5rem);  /* 6 filas */
     gap: 1rem;  /* Espacio entre cartas */
 }
 
@@ -34,4 +53,8 @@ body {
     align-items: center;
     font-size: 4rem;
     border-radius: 0.5rem;
+}
+
+#a {
+    grid-area: footer;
 }
