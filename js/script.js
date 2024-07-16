@@ -1,27 +1,85 @@
 'use strict';
+const cards = document.querySelectorAll(".card"); // Manipulamos el DOM / seleccionamos los elementos con clase .card.
 
-const cards = document.querySelectorAll(".card");
+let firstCard, secondCard;
+let bingo = false; // Creamos variables para la primera y segunda carta clickada y otra variable más para el momento en el que coinciden las dos cartas seleccionadas.
 
-const reveal = (e) => {
-  const currentCard = e.currentTarget;
-  currentCard.classList.add("flipped");
+// Declaramos un contador de intentor y un contador de errores
+let intentosCounter = 0;
+let errorCounter = 0;
 
-  setTimeout(() => {
-    currentCard.classList.remove("flipped");
-  }, 1000);
-};
+// Elementos del DOM para mostar los contadores de intentos y errores
+const intentosDisplay = document.getElementById('intentos');
+const errorDisplay = document.getElementById('errors');
 
-for (const card of cards) {
-  card.addEventListener("click", reveal);
+// Creamos función flipCard para controlar el click en cada carta - si bingo se cumple(su valor original es false), retorna y no ejecuta nada más - 
+function flipCard() {
+  if (bingo) return; //vuelve a su estado normal porque falla
+  if (this === firstCard) return; // Comprobamos si la carta girada (this) es la misma que firstCard. Si es igual la función se detiene para evitar que la carta se vuelva a procesar
+
+  // Agregamos flipped a la tarjeta actual this
+  this.classList.add('flipped'); 
+
+  // Si firstCard no tiene valor asigna el valor que tiene this a firstCard
+  if (!firstCard) {
+    firstCard = this;
+    return;
+  }
+
+  // Si firstCard ya tiene un valor asigna la carta actual (this) a secondCard
+  secondCard = this; 
+
+  //Incrementamos el contador de intentos y lo mostramos en pantalla
+  intentosCounter++;
+  intentosDisplay.textContent = `Intentos totales: ${intentosCounter}`;
+
+  checkForMatch(); 
 }
 
-// Paso 1: Crear el array de emojis
-const emojis =  ['👻', '👹', '🤪', '😎', '🤑', '💩', '🤬', '😋'];
+// Creamos la función checkForMatch para comprobar si las cartas clicadas coinciden
+function checkForMatch() {
+  let isMatch = firstCard.querySelector('.back').textContent === secondCard.querySelector('.back').textContent;
 
-// Paso 2: Duplicar el array
+  isMatch ? disableCards() : unflipCards();
+}
+
+// Creamos función disableCards para deshabilitar la interactividad de las cartas seleccionadas
+function disableCards() {
+  firstCard.removeEventListener('click', flipCard);
+  secondCard.removeEventListener('click', flipCard);
+
+  resetBoard();
+}
+
+// Creamos la función unflipCards para evitar que den la vuelta si las cartas clicadas coinciden
+function unflipCards() {
+  // incrementamos el contador de errores
+  errorCounter++;
+  errorDisplay.textContent = `Errores totales: ${errorCounter}`;
+  bingo = true;
+
+  setTimeout(() => {
+    firstCard.classList.remove('flipped');
+    secondCard.classList.remove('flipped');
+
+    resetBoard();
+  }, 1000);
+}
+
+// Creamos función resetBoard para asegurarnos de que el resultado anteriomente seleccionado no interfiera con el moviento siguiente
+function resetBoard() {
+  [firstCard, secondCard, bingo] = [null, null, false];
+}
+
+cards.forEach(card => card.addEventListener('click', flipCard));
+
+// Creamos el array de emojis
+const emojis =  ['👻', '👹', '👽', '🪢', '🦋', '🎲', '💻', '🌰'];
+
+// Duplicamos el array
 const pairedEmojis = emojis.concat(emojis);  // Esto crea un array con 16 elementos (8 pares)
 
-// Paso 3: Mezclar el array (usando Fisher-Yates)
+// Mezclamos el array (usando Fisher-Yates)
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -30,10 +88,12 @@ function shuffle(array) {
     return array;
 }
 
-const shuffledEmojis = shuffle(pairedEmojis);  // Debes mezclar el array duplicado
+
+const shuffledEmojis = shuffle(pairedEmojis);
 
 const backs = document.querySelectorAll('.back');
 
+// Asignamos un emoji a cada carta 
 backs.forEach((back, index) => {
     if (index < shuffledEmojis.length) {
         back.textContent = shuffledEmojis[index];
