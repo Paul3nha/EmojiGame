@@ -1,3 +1,5 @@
+'use strict';
+
 const cards = document.querySelectorAll(".card"); //manipulamos el DOM / seleccionamos los elementos con clase .card 
 
 //RESUMEN 1 parte: función reveal, al activarse añade la clase flipped a la carta clikada y tras 1 sec hace que vuelva a su estado original.
