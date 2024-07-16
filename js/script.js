@@ -24,7 +24,7 @@ function flipCard() {
   if (!firstCard) {
     firstCard = this;
     return;
-  }
+  };
 
   // Si firstCard ya tiene un valor asigna la carta actual (this) a secondCard
   secondCard = this; 
@@ -34,14 +34,14 @@ function flipCard() {
   intentosDisplay.textContent = (`Intentos totales: ${intentosCounter}`);
 
   checkForMatch(); 
-}
+};
 
 // Creamos la función checkForMatch para comprobar si las cartas clicadas coinciden
 function checkForMatch() {
   let isMatch = firstCard.querySelector('.back').textContent === secondCard.querySelector('.back').textContent;
 
   isMatch ? disableCards() : unflipCards();
-}
+};
 
 // Creamos función disableCards para deshabilitar la interactividad de las cartas seleccionadas
 function disableCards() {
@@ -49,7 +49,7 @@ function disableCards() {
   secondCard.removeEventListener('click', flipCard);
 
   resetBoard();
-}
+};
 
 // Creamos la función unflipCards para evitar que den la vuelta si las cartas clicadas coinciden
 function unflipCards() {
@@ -64,7 +64,7 @@ function unflipCards() {
 
     resetBoard();
   }, 1000);
-}
+};
 
 // Creamos función resetBoard para asegurarnos de que el resultado anteriomente seleccionado no interfiera con el moviento siguiente
 function resetBoard() {
