@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 
-
 body {
   font-family: sans-serif;
   font-weight: bold;
@@ -13,6 +12,7 @@ body {
 }
 
 .card {
+  list-style-type: none; /*quitamos las viñetas*/
   width: 100px;
   height: 200px;
   perspective: 600px;
