@@ -4,57 +4,49 @@
     box-sizing: border-box;
 }
 
-/* Usamos flexbox en el body para centrar el contenedor en pantalla*/
+
 body {
+    font-family: sans-serif;
+    font-weight: bold;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 10vh;
-    background-color: rgb(108, 59, 59); /*estaria guay meter una foto de fondo rollo un paisaje*/
-}
+    flex-wrap: wrap;
+  }
 
-
-header {
-    grid-area: head;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    display: flex;
-    
-}
-
-/* Configuramos container con grid: para distribuir los elementos en varias filas*/
-.container {
-    grid-area: card;
+  .card {
+    width: 100px;
+    height: 200px;
+    perspective: 600px;
+    margin: 1rem;
+  }
+  
+  .content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  }
+  
+  .front,
+  .back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(black, gray);
     display: grid;
-    width: 100%; /*no estoy segura*/
-    height: 250px; /*no estoy segura*/
-    grid-template-areas:  /*definimos la cuadricula*/
-    "head" "head" "head" "head"
-    "card" "card" "card" "card"
-    "card" "card" "card" "card"
-    "card" "card" "card" "card"
-    "card" "card" "card" "card"
-    "footer" "footer" "footer" "footer";
-
-    grid-template-columns: repeat(4, 8rem);  /* 4 columnas */
-    grid-template-rows: repeat(6, 14.5rem);  /* 6 filas */
-    gap: 1rem;  /* Espacio entre cartas */
-}
-
-
-/* A .card le asignamos ancho y alto definido y estilo, además de centrar el texto dentro de cada carta  */
-.card {
-    width: 8rem;
-    height: 14.5rem;
-    background-color: #8e9a8e; /*estaria guay que fuese una foto de la parte de atras de una carta real*/
-    color: rgba(88, 83, 83, 0.619);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 4rem;
-    border-radius: 0.5rem;
-}
-
-#a {
-    grid-area: footer;
-}
+    place-content: center;
+    font-size: 8rem;
+    border-radius: 1rem;
+    backface-visibility: hidden;
+    user-select: none;
+  }
+  
+  .back {
+    background: linear-gradient(steelblue, lightsteelblue);
+    transform: rotateY( 180deg );
+  }
+  
+  .card.flipped .content {
+    transform: rotateY( 180deg ) ;
+    transition: transform 0.5s;
+  }
