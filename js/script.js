@@ -5,12 +5,12 @@ let firstCard, secondCard;
 let notBingo = false; // Creamos variables para la primera y segunda carta clickada y otra variable más para el momento en el que coinciden las dos cartas seleccionadas.
 
 // Declaramos un contador de intentos y un contador de errores
-//let aciertosCounter = 0;
-//let errorCounter = 0;
+let intentosCounter = 0;
+let errorCounter = 0;
 
 // Elementos del DOM para mostar los contadores de intentos y errores
-//const aciertosDisplay = document.getElementById('aciertos');
-//const errorDisplay = document.getElementById('errors');
+const intentosDisplay = document.getElementById('intentos');
+const errorDisplay = document.getElementById('errors');
 
 // Creamos función flipCard para controlar el click en cada carta - si bingo se cumple(su valor original es false), retorna y no ejecuta nada más
 function flipCard() {
@@ -30,8 +30,8 @@ function flipCard() {
   secondCard = this; 
 
   //Incrementamos el contador de intentos y lo mostramos en pantalla
-  //aciertosCounter++;
-  //aciertosDisplay.textContent = (`Intentos totales: ${aciertosCounter}`);
+  intentosCounter++;
+  intentosDisplay.textContent = (`Intentos totales: ${intentosCounter}`);
 
   checkForMatch(); 
 }
@@ -54,8 +54,8 @@ function disableCards() {
 // Creamos la función unflipCards para evitar que den la vuelta si las cartas clicadas coinciden
 function unflipCards() {
   // incrementamos el contador de errores
-  //errorCounter++;
-  //errorDisplay.textContent = `Errores totales: ${errorCounter}`;
+  errorCounter++;
+  errorDisplay.textContent = `Errores totales: ${errorCounter}`;
   notBingo = true;
 
   setTimeout(() => {
