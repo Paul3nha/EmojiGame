@@ -1,55 +1,100 @@
 'use strict';
+const cards = document.querySelectorAll(".card"); // Manipulamos el DOM / seleccionamos los elementos con clase .card.
 
-const cards = document.querySelectorAll(".card"); //manipulamos el DOM / seleccionamos los elementos con clase .card 
+let firstCard, secondCard;
+let notBingo = false; // Creamos variables para la primera y segunda carta clickada y otra variable más para el momento en el que coinciden las dos cartas seleccionadas.
 
-//RESUMEN 1 parte: función reveal, al activarse añade la clase flipped a la carta clikada y tras 1 sec hace que vuelva a su estado original.
+// Declaramos un contador de intentos y un contador de errores
+let intentosCounter = 0;
+let errorCounter = 0;
 
-const reveal = (e) => { //función reveal se activa cd ocurre un evento. "e" es el evento
-  const currentCard = e.currentTarget; //e.currentTarget es el elemento en el que se establece el evento, es decir la carta clicada
-  currentCard.classList.add("flipped"); //se agrega la clase ".flipped" a currentCard. Esta carta se asocia en el CSS con lo que voltea
+// Elementos del DOM para mostar los contadores de intentos y errores
+const intentosDisplay = document.getElementById('aciertos');
+const errorDisplay = document.getElementById('errors');
+
+// Creamos función flipCard para controlar el click en cada carta - si bingo se cumple(su valor original es false), retorna y no ejecuta nada más
+function flipCard() {
+  if (notBingo) return; 
+  if (this === firstCard) return; // Comprobamos si la carta girada (this) es la misma que firstCard. Si es igual la función se detiene para evitar que la carta se vuelva a procesar
+
+  // Agregamos flipped a la tarjeta actual this
+  this.classList.add('flipped'); 
+
+  // Si firstCard no tiene valor asigna el valor que tiene this a firstCard
+  if (!firstCard) {
+    firstCard = this;
+    return;
+  }
+
+  // Si firstCard ya tiene un valor asigna la carta actual (this) a secondCard
+  secondCard = this; 
+
+  //Incrementamos el contador de intentos y lo mostramos en pantalla
+  intentosCounter++;
+  intentosDisplay.textContent = (`Intentos totales: ${intentosCounter}`);
+
+  checkForMatch(); 
+}
+
+// Creamos la función checkForMatch para comprobar si las cartas clicadas coinciden
+function checkForMatch() {
+  let isMatch = firstCard.querySelector('.back').textContent === secondCard.querySelector('.back').textContent;
+
+  isMatch ? disableCards() : unflipCards();
+}
+
+// Creamos función disableCards para deshabilitar la interactividad de las cartas seleccionadas
+function disableCards() {
+  firstCard.removeEventListener('click', flipCard);
+  secondCard.removeEventListener('click', flipCard);
+
+  resetBoard();
+}
+
+// Creamos la función unflipCards para evitar que den la vuelta si las cartas clicadas coinciden
+function unflipCards() {
+  // incrementamos el contador de errores
+  //errorCounter++;
+  //errorDisplay.textContent = `Errores totales: ${errorCounter}`;
+  notBingo = true;
 
   setTimeout(() => {
-    currentCard.classList.remove("flipped"); //temporizador que elimine el evento "flipped" tras 1 sec
-  }, 1000); 
-};
+    firstCard.classList.remove('flipped');
+    secondCard.classList.remove('flipped');
 
-//Iteramos sobre las cartas (es un array) con un bucle for...of, a cada posicion le agregamos el evento click con el que se ejecuta la función reveal
-for (const card of cards) {
-  card.addEventListener("click", reveal);
+    resetBoard();
+  }, 1000);
 }
 
-//Vamos 2 parte:
-// Paso 2.1: Crear el array de emojis
-const emojis =  ['👻', '👹', '🍼', '🧑🏽‍🦽', '💗', '💩', '🫄🏻', '🥑'];
+// Creamos función resetBoard para asegurarnos de que el resultado anteriomente seleccionado no interfiera con el moviento siguiente
+function resetBoard() {
+  [firstCard, secondCard, notBingo] = [null, null, false];
+}
 
-// Paso 2.2: Duplicar el array aplicando metodo .concat()
+cards.forEach(card => card.addEventListener('click', flipCard));
+
+// Creamos el array de emojis
+const emojis =  ['👻', '👹', '👽', '🪢', '🦋', '🎲', '💻', '🌰'];
+
+// Duplicamos el array
 const pairedEmojis = emojis.concat(emojis);  // Esto crea un array con 16 elementos (8 pares)
 
-// Paso 2.3: Mezclar el array (usando el método Fisher-Yates: es el que se usa típicamente para barajar en los juegos de azar)
-function shuffle(array) { //función shuffle tomará un array como argumento
-    for (let i = array.length - 1; i > 0; i--) { //bucle q comienza en el último elemento del array y se mueve hacia el 1ro
-        const j = Math.floor(Math.random() * (i + 1)); //generación de índice aleatorio 'j', entre 0 y 'i' inclusive. Math.random() devuelve un número aleatorio entre 0 y 1, que se multiplica por i + 1 y se redondea hacia abajo con Math.floor().
-
-
-        [array[i], array[j]] = [array[j], array[i]]; // elementos en las posiciones i y j se intercambian usando desestructuración de arrays.
+// Mezclamos el array (usando Fisher-Yates)
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
-    return array; //array ya mezclado
-}
+    return array;
+};
 
-const shuffledEmojis = shuffle(pairedEmojis);  //guardamos en la variable shuffledEmojis el resultado de la función shuffle, que es un nuevo array mezclado
 
-const backs = document.querySelectorAll('.back'); //manipulamos el DOM seleccionando todos los elementos con la clase .back (esto devuelve array = nodeList)
+const shuffledEmojis = shuffle(pairedEmojis);
+const backs = document.querySelectorAll('.back');
 
-//Paso 2.4: asignamos contenido a los elementos DOM
-backs.forEach((back, index) => { //vamos a iterar
-    if (index < shuffledEmojis.length) { //verificamos si índice (index) es menor que la longitud de nuestro array  mezclado shuffledEmojis.
-        back.textContent = shuffledEmojis[index]; //si se cumple lo anterior, asignamos el contenido shuffledEmojis en la posición index con .textContent en el .back
+// Asignamos un emoji a cada carta 
+backs.forEach((back, index) => {
+    if (index < shuffledEmojis.length) {
+        back.textContent = shuffledEmojis[index];
     }
 });
-
-/*    QUE FALTA?
-    - asignar una función que compare los resultados del volteo y que si coinciden, permanezcan destapadas las cartas
-    - crear un contador con los fallos al no cumplirse lo anterior
-
-    - crear un botón o cuadro de diálogo score con los fallos o aciertos
-*/

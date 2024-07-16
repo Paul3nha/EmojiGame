@@ -4,15 +4,40 @@
   box-sizing: border-box;
 }
 
+
 body {
   font-family: sans-serif;
   font-weight: bold;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 20%;
+  grid-template-rows: 10% 1fr 10%;
+  grid-template-areas: 
+  "h" "h" "h" "h" "h"
+  "s" "c" "c" "c" "c"
+  "s" "c" "c" "c" "c"
+  "s" "c" "c" "c" "c"
+  "s" "c" "c" "c" "c"
+  "f" "f" "f" "f" "f"
+  ;
+}
+
+.stats {
+  grid-area: "s";
+}
+
+ul{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  display: grid;
+}
+
+.card2 {
+  grid-area: "c";
 }
 
 .card {
-  list-style-type: none; /*quitamos las viñetas*/
+  list-style-type: none;
   width: 100px;
   height: 200px;
   perspective: 600px;
@@ -49,4 +74,8 @@ body {
 .card.flipped .content {
   transform: rotateY( 180deg ) ;
   transition: transform 0.5s;
+}
+
+footer{
+  grid-area: "f";
 }
