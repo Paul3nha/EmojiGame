@@ -2,19 +2,19 @@
 const cards = document.querySelectorAll(".card"); // Manipulamos el DOM / seleccionamos los elementos con clase .card.
 
 let firstCard, secondCard;
-let bingo = false; // Creamos variables para la primera y segunda carta clickada y otra variable más para el momento en el que coinciden las dos cartas seleccionadas.
+let notBingo = false; // Creamos variables para la primera y segunda carta clickada y otra variable más para el momento en el que coinciden las dos cartas seleccionadas.
 
-// Declaramos un contador de intentor y un contador de errores
-let intentosCounter = 0;
-let errorCounter = 0;
+// Declaramos un contador de intentos y un contador de errores
+//let aciertosCounter = 0;
+//let errorCounter = 0;
 
 // Elementos del DOM para mostar los contadores de intentos y errores
-const intentosDisplay = document.getElementById('intentos');
-const errorDisplay = document.getElementById('errors');
+//const aciertosDisplay = document.getElementById('aciertos');
+//const errorDisplay = document.getElementById('errors');
 
-// Creamos función flipCard para controlar el click en cada carta - si bingo se cumple(su valor original es false), retorna y no ejecuta nada más - 
+// Creamos función flipCard para controlar el click en cada carta - si bingo se cumple(su valor original es false), retorna y no ejecuta nada más
 function flipCard() {
-  if (bingo) return; 
+  if (notBingo) return; 
   if (this === firstCard) return; // Comprobamos si la carta girada (this) es la misma que firstCard. Si es igual la función se detiene para evitar que la carta se vuelva a procesar
 
   // Agregamos flipped a la tarjeta actual this
@@ -30,8 +30,8 @@ function flipCard() {
   secondCard = this; 
 
   //Incrementamos el contador de intentos y lo mostramos en pantalla
-  intentosCounter++;
-  intentosDisplay.textContent = `Intentos totales: ${intentosCounter}`;
+  //aciertosCounter++;
+  //aciertosDisplay.textContent = (`Intentos totales: ${aciertosCounter}`);
 
   checkForMatch(); 
 }
@@ -54,9 +54,9 @@ function disableCards() {
 // Creamos la función unflipCards para evitar que den la vuelta si las cartas clicadas coinciden
 function unflipCards() {
   // incrementamos el contador de errores
-  errorCounter++;
-  errorDisplay.textContent = `Errores totales: ${errorCounter}`;
-  bingo = true;
+  //errorCounter++;
+  //errorDisplay.textContent = `Errores totales: ${errorCounter}`;
+  notBingo = true;
 
   setTimeout(() => {
     firstCard.classList.remove('flipped');
@@ -68,7 +68,7 @@ function unflipCards() {
 
 // Creamos función resetBoard para asegurarnos de que el resultado anteriomente seleccionado no interfiera con el moviento siguiente
 function resetBoard() {
-  [firstCard, secondCard, bingo] = [null, null, false];
+  [firstCard, secondCard, notBingo] = [null, null, false];
 }
 
 cards.forEach(card => card.addEventListener('click', flipCard));
@@ -86,7 +86,7 @@ function shuffle(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
-}
+};
 
 
 const shuffledEmojis = shuffle(pairedEmojis);
