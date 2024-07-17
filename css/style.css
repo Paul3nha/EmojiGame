@@ -5,10 +5,12 @@
 }
 
 body {
+  width: 100%;
+  height: 100%;
   font-family: sans-serif;
   font-weight: bold;
   display: grid;
-  grid-template-columns: 30vh repeat(4, 1fr);
+  grid-template-columns: 20vh repeat(4, 1fr);
   grid-template-rows: 10vh repeat(4, 1fr) 10vh;
   grid-template-areas: 
   "h h h h h"
@@ -23,7 +25,9 @@ body {
 header {
   grid-area: h;
   background-color: blueviolet;
-  text-align: center;
+  display: grid; /* de nuevo, para centrar el header en su contenedor */
+  place-items: center; /* Centra horizontal y verticalmente */
+  text-align: center; /* Centra el texto dentro del header */
 }
 
 ul {
@@ -45,13 +49,17 @@ ul li {
 div.stats {
   grid-area: s;
   background-color: pink;
-  text-align: center;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
-  width: 100px;
-  height: 200px;
-  perspective: 600px;
+  width: 8rem;
+  height: 14rem;
+  perspective: 350px; /*el efecto 3D que hace la carta al girar*/
   margin: 1rem;
 }
 
@@ -65,12 +73,12 @@ div.stats {
 .front,
 .back {
   position: absolute;
-  height: 100%;
   width: 100%;
+  height: 100%;
   background: linear-gradient(black, gray);
   display: grid;
   place-content: center;
-  font-size: 8rem;
+  font-size: 7rem;
   border-radius: 1rem;
   backface-visibility: hidden;
   user-select: none;
@@ -78,11 +86,11 @@ div.stats {
 
 .back {
   background: linear-gradient(steelblue, lightsteelblue);
-  transform: rotateY( 180deg );
+  transform: rotateY(180deg);
 }
 
 .card.flipped .content {
-  transform: rotateY( 180deg ) ;
+  transform: rotateY(180deg) ;
   transition: transform 0.5s;
 }
 
@@ -90,5 +98,7 @@ footer {
   grid-area: f;
   background-color: aquamarine;
   font-size: 1rem;
-  text-align: center;
+  display: grid; 
+  place-items: center; 
+  text-align: center; 
 }
