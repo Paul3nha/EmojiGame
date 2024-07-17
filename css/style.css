@@ -7,12 +7,46 @@
 body {
   font-family: sans-serif;
   font-weight: bold;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 20%;
+  grid-template-rows: 1fr 90% 1fr;
+  grid-template-areas: 
+  "h" "h" "h" "h" "h"
+  "s" "c" "c" "c" "c"
+  "s" "c" "c" "c" "c"
+  "s" "c" "c" "c" "c"
+  "s" "c" "c" "c" "c"
+  "f" "f" "f" "f" "f"
+  ;
+}
+
+header {
+  grid-area: 'h';
+  background-color: blueviolet;
+}
+
+ul {
+  grid-area: 'c';
+  background-color: greenyellow;
+  list-style-type: none;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+  margin: 0;
+}
+
+ul li {
+  margin: 0.5rem;
+}
+
+div.stats {
+  grid-area: 's';
+  background-color: pink;
 }
 
 .card {
-  list-style-type: none; /*quitamos las viñetas*/
   width: 100px;
   height: 200px;
   perspective: 600px;
@@ -20,7 +54,6 @@ body {
 }
 
 .content {
-  position: absolute;
   width: 100%;
   height: 100%;
   transition: transform 1s;
@@ -49,4 +82,10 @@ body {
 .card.flipped .content {
   transform: rotateY( 180deg ) ;
   transition: transform 0.5s;
+}
+
+footer {
+  grid-area: 'f';
+  background-color: aquamarine;
+  font-size: 0.5rem;
 }
