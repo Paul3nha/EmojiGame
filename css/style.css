@@ -5,61 +5,67 @@
 }
 
 body {
-  width: 100%;
-  height: 100%;
+
   font-family: sans-serif;
   font-weight: bold;
+  justify-content: center;
   display: grid;
-  grid-template-columns: 20vh repeat(4, 1fr);
-  grid-template-rows: 10vh repeat(4, 1fr) 10vh;
+  grid-template-columns: 10rem repeat(4, 1fr); /*he modificado la columna izquierda para que mantenga el mismo tamaño*/
+  grid-template-rows: 10vh repeat(4, 1fr) 2rem; /*he modificado el tamaño de la ultima fila*/
   grid-template-areas: 
   "h h h h h"
   "s c c c c"
   "s c c c c"
   "s c c c c"
   "s c c c c"
-  "f f f f f"
-  ;
+  "f f f f f";
 }
 
 header {
   grid-area: h;
   background-color: blueviolet;
-  display: grid; /* de nuevo, para centrar el header en su contenedor */
-  place-items: center; /* Centra horizontal y verticalmente */
-  text-align: center; /* Centra el texto dentro del header */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 ul {
   grid-area: c;
   background-color: greenyellow;
   list-style-type: none;
-  padding: 0.5rem;
+  /*padding: 1fr;*/
+  border: 20px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(4, 25%);
   gap: 10px;
   margin: 0;
+  padding: 10px;
 }
 
 ul li {
   margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 div.stats {
   grid-area: s;
   background-color: pink;
-  padding: 0.5rem;
+  text-align: center;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .card {
-  width: 8rem;
-  height: 14rem;
-  perspective: 350px; /*el efecto 3D que hace la carta al girar*/
+  width: 100px;  /*he cambiado estos valores, para ajustarlo al espacio y que se vea completo*/
+  height: 150px;
+  perspective: 300px;
   margin: 1rem;
 }
 
@@ -73,12 +79,12 @@ div.stats {
 .front,
 .back {
   position: absolute;
-  width: 100%;
   height: 100%;
+  width: 100%;
   background: linear-gradient(black, gray);
   display: grid;
   place-content: center;
-  font-size: 7rem;
+  font-size: 4rem;
   border-radius: 1rem;
   backface-visibility: hidden;
   user-select: none;
@@ -86,11 +92,11 @@ div.stats {
 
 .back {
   background: linear-gradient(steelblue, lightsteelblue);
-  transform: rotateY(180deg);
+  transform: rotateY( 180deg );
 }
 
 .card.flipped .content {
-  transform: rotateY(180deg) ;
+  transform: rotateY( 180deg ) ;
   transition: transform 0.5s;
 }
 
@@ -98,9 +104,10 @@ footer {
   grid-area: f;
   background-color: aquamarine;
   font-size: 1rem;
-  display: grid; 
-  place-items: center; 
-  text-align: center; 
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .popup {
@@ -136,4 +143,13 @@ footer {
 #errors {
   text-align: left;
   margin: 20px 0;
+}
+
+/*Media query para pantallas de más de 350px*/
+
+@media (min-width: 350px) {
+  body {
+    padding: 0 calc(35% - 600px); /*con esto crece el padding proporcionalmente por los lateralesS*/
+}
+
 }
