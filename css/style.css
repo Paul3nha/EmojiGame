@@ -8,25 +8,26 @@ body {
   font-family: sans-serif;
   font-weight: bold;
   display: grid;
-  grid-template-columns: 1fr 20%;
-  grid-template-rows: 1fr 90% 1fr;
+  grid-template-columns: 30vh repeat(4, 1fr);
+  grid-template-rows: 10vh repeat(4, 1fr) 10vh;
   grid-template-areas: 
-  "h" "h" "h" "h" "h"
-  "s" "c" "c" "c" "c"
-  "s" "c" "c" "c" "c"
-  "s" "c" "c" "c" "c"
-  "s" "c" "c" "c" "c"
-  "f" "f" "f" "f" "f"
+  "h h h h h"
+  "s c c c c"
+  "s c c c c"
+  "s c c c c"
+  "s c c c c"
+  "f f f f f"
   ;
 }
 
 header {
-  grid-area: 'h';
+  grid-area: h;
   background-color: blueviolet;
+  text-align: center;
 }
 
 ul {
-  grid-area: 'c';
+  grid-area: c;
   background-color: greenyellow;
   list-style-type: none;
   padding: 0.5rem;
@@ -42,8 +43,9 @@ ul li {
 }
 
 div.stats {
-  grid-area: 's';
+  grid-area: s;
   background-color: pink;
+  text-align: center;
 }
 
 .card {
@@ -85,7 +87,8 @@ div.stats {
 }
 
 footer {
-  grid-area: 'f';
+  grid-area: f;
   background-color: aquamarine;
-  font-size: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
 }
