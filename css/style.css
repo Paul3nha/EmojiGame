@@ -6,11 +6,12 @@
 }
 
 body {
+
   font-family: sans-serif;
   font-weight: bold;
-    justify-content: center;
+  justify-content: center;
   display: grid;
-  grid-template-columns: 10rem repeat(4, 1fr); /*he modificado la columna izquierda para que mantenga e mismo tamaño*/
+  grid-template-columns: 10rem repeat(4, 1fr); /*he modificado la columna izquierda para que mantenga el mismo tamaño*/
   grid-template-rows: 10vh repeat(4, 1fr) 2rem; /*he modificado el tamaño de la ultima fila*/
   grid-template-areas: 
   "h h h h h"
