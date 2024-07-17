@@ -2,22 +2,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 body {
   font-family: sans-serif;
   font-weight: bold;
+    justify-content: center;
   display: grid;
-  grid-template-columns: 30vh repeat(4, 1fr); /*hay que modificarlo para que la columna que ocupa los intentos sea la que se encoje*/
-  grid-template-rows: 11vh repeat(4, 1fr) 4vh;
+  grid-template-columns: 10rem repeat(4, 1fr); /*he modificado la columna izquierda para que mantenga e mismo tamaño*/
+  grid-template-rows: 10vh repeat(4, 1fr) 2rem; /*he modificado el tamaño de la ultima fila*/
   grid-template-areas: 
   "h h h h h"
   "s c c c c"
   "s c c c c"
   "s c c c c"
   "s c c c c"
-  "f f f f f"
-  ;
+  "f f f f f";
 }
 
 header {
@@ -28,6 +29,7 @@ header {
   justify-content: center;
   align-items: center;
 }
+
 
 ul {
   grid-area: c;
@@ -152,4 +154,13 @@ footer {
   justify-content: center;
   align-items: center;
 }
- 
+
+
+/*Media query para pantallas de más de 350px*/
+
+@media (min-width: 350px) {
+  body {
+    padding: 0 calc(45% - 350px); /*con esto crece el padding proporcionalmente por los lateralesS*/
+}
+
+}
