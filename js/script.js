@@ -39,6 +39,10 @@ function flipCard() {
 
 //Función checkForMatch() comprueba si las cartas clickadas coinciden para dejarlas boca arriba (disabledCards()) o volverlas a voltear (unflipCards())
 
+const popup = document.getElementById('popup'); //elemento que propia el pop up
+
+const closePopupButton = document.getElementById('close-popup'); //elemento que cerrará el pop up
+
 function checkForMatch() {
   let isMatch = firstCard.querySelector('.back').textContent === secondCard.querySelector('.back').textContent; //// Comprueba si el contenido de la parte trasera de las dos cartas es igual.
 
@@ -47,11 +51,24 @@ function checkForMatch() {
 
     successCounter++; // Incrementa el contador de aciertos
     successDisplay.textContent = `Aciertos totales: ${successCounter}`; // Actualiza el display de aciertos
-    
+
+    if (successCounter === 8) { // 8: número total de pares en el juego
+      showPopup();
+  }
+   
+
   } else {
     unflipCards();
   }
 }
+
+function showPopup() { //función que ejecutará el popUp
+  popup.style.display = 'flex';
+}
+
+closePopupButton.addEventListener('click', () => { //evento que cierra el pop up
+  popup.style.display = 'none';
+});
 
 // Creamos función disableCards para deshabilitar la interactividad de las cartas seleccionadas
 function disableCards() { //las cartas se quedan boca arriba y no se pueden seleccionar más
@@ -75,6 +92,7 @@ function unflipCards() { //cartas vuelven a su estado original si, al clickarlas
     resetBoard(); //reinicia el tablero para poder empezar de nuevo el juego cuando se clicke la siguiente carta
   }, 1000);
 }
+
 
 //ResetBoard() reinicia las variables firstCard() y secondCard() para que el resultado anterior no interfiera con el próximo. Esta función se llama después de comprobar que las cartas anteriores (first y second) no coinciden
 function resetBoard() {
