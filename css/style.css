@@ -4,13 +4,12 @@
   box-sizing: border-box;
 }
 
-
 body {
   font-family: sans-serif;
   font-weight: bold;
   display: grid;
   grid-template-columns: 1fr 20%;
-  grid-template-rows: 10% 1fr 10%;
+  grid-template-rows: 1fr 90% 1fr;
   grid-template-areas: 
   "h" "h" "h" "h" "h"
   "s" "c" "c" "c" "c"
@@ -21,23 +20,33 @@ body {
   ;
 }
 
-.stats {
-  grid-area: "s";
+header {
+  grid-area: 'h';
+  background-color: blueviolet;
 }
 
-ul{
+ul {
+  grid-area: 'c';
+  background-color: greenyellow;
+  list-style-type: none;
+  padding: 0.5rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  display: grid;
+  gap: 10px;
+  margin: 0;
 }
 
-.card2 {
-  grid-area: "c";
+ul li {
+  margin: 0.5rem;
+}
+
+div.stats {
+  grid-area: 's';
+  background-color: pink;
 }
 
 .card {
-  list-style-type: none;
   width: 100px;
   height: 200px;
   perspective: 600px;
@@ -45,7 +54,6 @@ ul{
 }
 
 .content {
-  position: absolute;
   width: 100%;
   height: 100%;
   transition: transform 1s;
@@ -76,6 +84,8 @@ ul{
   transition: transform 0.5s;
 }
 
-footer{
-  grid-area: "f";
+footer {
+  grid-area: 'f';
+  background-color: aquamarine;
+  font-size: 0.5rem;
 }
