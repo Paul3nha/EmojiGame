@@ -1,0 +1,189 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: sans-serif;
+    font-weight: bold;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 5rem repeat(4, 1fr); 
+    grid-template-rows: 7vh repeat(4, 1fr) 2rem; 
+    grid-template-areas: 
+    "h h h h h"
+    "s c c c c"
+    "s c c c c"
+    "s c c c c"
+    "s c c c c"
+    "f f f f f";
+  }
+  
+  header {
+    grid-area: h;
+    background-color: blueviolet;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  ul {
+    grid-area: c;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    /* grid-template-areas:
+    "c c c c"
+    "c c c c"
+    "c c c c"
+    "c c c c"
+    ;          no lo necesito porque coge las medidas del grid del body*/
+    background-color: greenyellow;
+    list-style-type: none;
+    /*padding: 1fr;*/
+    border: 20px;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  ul li {
+    margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  div.stats {
+    grid-area: s;
+    background-color: pink;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .card {
+   /* width: 100px;  
+    height: 150px;    lo comentamos para cuadrar las cartas en pantalla*/
+    perspective: 1000px;
+    /* margin: 1rem;   quitamos margin porque ya tenemos gap entre cartas*/
+    margin: 0;
+  }
+  
+  .content {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 150px;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  
+  .front,
+  .back {
+    position: absolute;
+    width: 100px;
+    height: 150px;
+    background: linear-gradient(black, gray);
+    display: grid;
+    place-content: center;
+    font-size: 4rem;
+    border-radius: 1rem;
+    backface-visibility: hidden;
+    user-select: none;
+  }
+  
+  .back {
+    background: linear-gradient(steelblue, lightsteelblue);
+    transform: rotateY( 180deg );
+  }
+  
+  .flipped .content {
+    transform: rotateY( 180deg ) ;
+    transition: transform 0.5s;
+  }
+  
+  footer {
+    grid-area: f;
+    background-color: aquamarine;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 1; /*para ver el mensaje final por encima de la página*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-content {
+    background-color: rgba(196, 80, 176, 0.685);
+    padding: 40px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  #success {
+    display: none; /*para ocultarlo*/
+    text-align: left;
+  }
+  
+  #tries {
+    text-align: left;
+  }
+  
+  #errors {
+    text-align: left;
+  }
+  
+  
+  /*Media query para pantallas de más de 350px*/
+  
+  @media (min-width: 350px) {
+    body {
+      padding: 0 calc(35% - 350px); /*con esto crece el padding proporcionalmente por los laterales*/
+  }
+  }
+
+  @media (max-width: 430px) {  /*Esta parte define una consulta de medios que se activa cuando el ancho de la ventana es de 350 píxeles o menos.*/
+    body {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 10vh repeat(4, 1fr) 15vh 15vh;
+        grid-template-areas:
+        "h h h h"
+        "c c c c"
+        "c c c c"
+        "c c c c"
+        "c c c c"
+        "s s s s"
+        "f f f f"
+        ;
+    }
+
+    header {
+        font-size: 0.75rem;
+
+    }
+
+    ul {
+        max-width: ;
+        min-width: none;
+    }
+
+  }
