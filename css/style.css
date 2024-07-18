@@ -151,6 +151,47 @@ footer {
   text-align: left;
 }
 
+/*Mis Cambios*/
+
+    /*Añadiendo Imagen de fondo al fondo de las cartas*/
+    ul {
+      background-image: url("/images/imagenProyectoEmoji.jpg");
+      background-size: cover; /* Ajusta la imagen para cubrir todo el cuerpo */
+      background-position: center; /* Centra la imagen */
+      background-repeat: no-repeat; /* Evita que la imagen se repita */
+      height: 100vh; /* Ajusta la altura del cuerpo al 100% del viewport */
+      margin: 0; /* Elimina el margen predeterminado del cuerpo */
+      padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+      }
+
+      /*Implementando*/
+      
+      li.card {
+        width: 100px; /* Ancho deseado del contenedor de la carta */
+        height: 150px; /* Alto deseado del contenedor de la carta */
+        border: 1px solid #ccc;
+        margin: 10px;
+        display: inline-block; /* Para que los elementos li se muestren en línea */
+      }
+      
+      .content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      
+      .front {
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Para recortar la imagen si es necesario */
+      }
+      
+      .front img {
+        width: 100%; /* Ajusta la imagen al ancho del contenedor .front */
+        height: auto; /* Ajusta la altura automáticamente */
+      }
+    
+  /*Finalizan mis cambios*/
 
 /*Media query para pantallas de más de 350px*/
 
