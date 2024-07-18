@@ -31,7 +31,6 @@ header {
   align-items: center;
 }
 
-
 ul {
   grid-area: c;
   background-color: greenyellow;
@@ -81,8 +80,8 @@ div.stats {
 }
 
 .content {
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: 150px;
   transition: transform 1s;
   transform-style: preserve-3d;
 }
