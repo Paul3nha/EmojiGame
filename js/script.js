@@ -32,7 +32,7 @@ function flipCard() {
 
 
   triesCounter++;//Incrementamos el contador de tries y lo mostramos en pantalla
-  triesDisplay.textContent = `Intentos totales: ${triesCounter}`;
+  triesDisplay.textContent = `Tries: ${triesCounter}`;
 
   checkForMatch(); //// Llama a la función checkForMatch para comprobar si las cartas coinciden.
 }
@@ -50,13 +50,12 @@ function checkForMatch() {
     disableCards();
 
     successCounter++; // Incrementa el contador de aciertos
-    successDisplay.textContent = `Aciertos totales: ${successCounter}`; // Actualiza el display de aciertos
+    successDisplay.textContent = `Matches: ${successCounter}`; // Actualiza el display de aciertos
 
     if (successCounter === 8) { // 8: número total de pares en el juego
       showPopup();
   }
    
-
   } else {
     unflipCards();
   }
@@ -82,7 +81,7 @@ function disableCards() { //las cartas se quedan boca arriba y no se pueden sele
 function unflipCards() { //cartas vuelven a su estado original si, al clickarlas no hay coincidencias
   
   errorCounter++;// incrementamos el contador de errores
-  errorDisplay.textContent = `Errores totales: ${errorCounter}`;
+  errorDisplay.textContent = `Errors: ${errorCounter}`;
   notBingo = true; //indicar que hay un error en el juego.
 
   setTimeout(() => { //función que eliminará el evento flipped pasado 1 sec 
@@ -126,3 +125,4 @@ backs.forEach((back, index) => {
         back.textContent = shuffledEmojis[index];
     } //si el index es menor que la longitud de shuffledEmojis, se asigna el emoji correspondiente a back.textContent.
 });
+
