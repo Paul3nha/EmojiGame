@@ -32,12 +32,16 @@ function flipCard() {
 
 
   triesCounter++;//Incrementamos el contador de tries y lo mostramos en pantalla
-  triesDisplay.textContent = `Intentos totales: ${triesCounter}`;
+  triesDisplay.textContent = `Tries: ${triesCounter}`;
 
   checkForMatch(); //// Llama a la función checkForMatch para comprobar si las cartas coinciden.
 }
 
 //Función checkForMatch() comprueba si las cartas clickadas coinciden para dejarlas boca arriba (disabledCards()) o volverlas a voltear (unflipCards())
+
+const popup = document.getElementById('popup'); //elemento que propia el pop up
+
+const closePopupButton = document.getElementById('close-popup'); //elemento que cerrará el pop up
 
 function checkForMatch() {
   let isMatch = firstCard.querySelector('.back').textContent === secondCard.querySelector('.back').textContent; //// Comprueba si el contenido de la parte trasera de las dos cartas es igual.
@@ -46,12 +50,24 @@ function checkForMatch() {
     disableCards();
 
     successCounter++; // Incrementa el contador de aciertos
-    successDisplay.textContent = `Aciertos totales: ${successCounter}`; // Actualiza el display de aciertos
-    
+    successDisplay.textContent = `Matches: ${successCounter}`; // Actualiza el display de aciertos
+
+    if (successCounter === 8) { // 8: número total de pares en el juego
+      showPopup();
+  }
+   
   } else {
     unflipCards();
   }
 }
+
+function showPopup() { //función que ejecutará el popUp
+  popup.style.display = 'flex';
+}
+
+closePopupButton.addEventListener('click', () => { //evento que cierra el pop up
+  popup.style.display = 'none';
+});
 
 // Creamos función disableCards para deshabilitar la interactividad de las cartas seleccionadas
 function disableCards() { //las cartas se quedan boca arriba y no se pueden seleccionar más
@@ -65,7 +81,7 @@ function disableCards() { //las cartas se quedan boca arriba y no se pueden sele
 function unflipCards() { //cartas vuelven a su estado original si, al clickarlas no hay coincidencias
   
   errorCounter++;// incrementamos el contador de errores
-  errorDisplay.textContent = `Errores totales: ${errorCounter}`;
+  errorDisplay.textContent = `Errors: ${errorCounter}`;
   notBingo = true; //indicar que hay un error en el juego.
 
   setTimeout(() => { //función que eliminará el evento flipped pasado 1 sec 
@@ -75,6 +91,7 @@ function unflipCards() { //cartas vuelven a su estado original si, al clickarlas
     resetBoard(); //reinicia el tablero para poder empezar de nuevo el juego cuando se clicke la siguiente carta
   }, 1000);
 }
+
 
 //ResetBoard() reinicia las variables firstCard() y secondCard() para que el resultado anterior no interfiera con el próximo. Esta función se llama después de comprobar que las cartas anteriores (first y second) no coinciden
 function resetBoard() {
@@ -108,23 +125,3 @@ backs.forEach((back, index) => {
         back.textContent = shuffledEmojis[index];
     } //si el index es menor que la longitud de shuffledEmojis, se asigna el emoji correspondiente a back.textContent.
 });
-
-//Función para activar el modal. Primero hay que definir que todas las parejas están correctas, o sea, aciertos = 8
-
-// Modal Logic
-let modal = document.getElementById("idModal");
-let span = document.getElementsByClassName("close")[0];
-
-function openModal() {
-  modal.style.display = "block";
-}
-
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
