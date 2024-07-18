@@ -63,8 +63,8 @@ function checkForMatch() {
         successCounter++;
         successDisplay.textContent = `Aciertos totales: ${successCounter}`;
     
-    if (successCounter === 8) {
-        showPopup('¡Has encontrado todas las parejas👌, pasa al siguiente nivel!!!');
+    if (successCounter === 12) {
+        showPopup('¡You find all the pairs👌, That s all folk!!!');
     }
     } else {
     
@@ -106,10 +106,11 @@ function startGame() {
 });
 }
 
-// -- SIRVE PARA PASAR AL HTML DEL NIVEL 2, LO HE LLAMADO indexLevel2.html PARA ACLARARME YO, PERO LE PODEMOS PONER COMO SEA
+/* En el nivel 3 hay que desactivar la llamada al siguiente nivel. La dejo comentada por si sirve, si no la borramos al final
 nextLevelButton.addEventListener('click', () => {
-window.location.href = 'index2.html';
+window.location.href = 'indexLevel2.html';
 });
+*/
 
 
 // Creamos función disableCards para deshabilitar la interactividad de las cartas seleccionadas
@@ -139,7 +140,7 @@ function resetBoard() {
 cards.forEach(card => card.addEventListener('click', flipCard));
 
 // Creamos el array de emojis y lo duplicamos
-const emojis = ['👻', '👹', '👽', '🪢', '🦋', '🎲', '💻', '🌰'];
+const emojis = ['👻', '👹', '👽', '🪢', '🦋', '🎲', '💻', '🌰', '🐙', '🍕', '🎱', '🚁'];
 const pairedEmojis = emojis.concat(emojis);
 
 // Mezclamos el array (usando Fisher-Yates)

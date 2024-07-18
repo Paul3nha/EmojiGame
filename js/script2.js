@@ -63,7 +63,7 @@ function checkForMatch() {
         successCounter++;
         successDisplay.textContent = `Aciertos totales: ${successCounter}`;
     
-    if (successCounter === 8) {
+    if (successCounter === 10) {
         showPopup('¡Has encontrado todas las parejas👌, pasa al siguiente nivel!!!');
     }
     } else {
@@ -108,7 +108,7 @@ function startGame() {
 
 // -- SIRVE PARA PASAR AL HTML DEL NIVEL 2, LO HE LLAMADO indexLevel2.html PARA ACLARARME YO, PERO LE PODEMOS PONER COMO SEA
 nextLevelButton.addEventListener('click', () => {
-window.location.href = 'index2.html';
+window.location.href = 'index3.html';
 });
 
 
@@ -139,7 +139,7 @@ function resetBoard() {
 cards.forEach(card => card.addEventListener('click', flipCard));
 
 // Creamos el array de emojis y lo duplicamos
-const emojis = ['👻', '👹', '👽', '🪢', '🦋', '🎲', '💻', '🌰'];
+const emojis = ['👻', '👹', '👽', '🪢', '🦋', '🎲', '💻', '🌰', '🐙', '🍕'];
 const pairedEmojis = emojis.concat(emojis);
 
 // Mezclamos el array (usando Fisher-Yates)

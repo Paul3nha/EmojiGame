@@ -5,13 +5,12 @@
   }
   
   body {
-    width: 100%;
-    height: 100%;
+    
     font-family: sans-serif;
     font-weight: bold;
     display: grid;
-    grid-template-columns: 20vh repeat(4, 1fr);
-    grid-template-rows: 10vh repeat(4, 1fr) 10vh;
+    grid-template-columns: 5rem repeat(4, 1fr);
+    grid-template-rows: 7vh repeat(4, 1fr) 2rem;
     grid-template-areas: 
     "h h h h h"
     "s c c c c"
@@ -25,63 +24,78 @@
   header {
     grid-area: h;
     background-color: blueviolet;
-    display: grid; /* de nuevo, para centrar el header en su contenedor */
-    place-items: center; /* Centra horizontal y verticalmente */
-    text-align: center; /* Centra el texto dentro del header */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   ul {
     grid-area: c;
-    background-color: greenyellow;
-    list-style-type: none;
-    padding: 0.5rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 10px;
-    margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  /* grid-template-areas:
+  "c c c c"
+  "c c c c"
+  "c c c c"
+  "c c c c"
+  ;          no lo necesito porque coge las medidas del grid del body*/
+  background-color: greenyellow;
+  list-style-type: none;
+  /*padding: 1fr;*/
+  border: 20px;
+  gap: 10px;
+  padding: 10px;
   }
   
   ul li {
     margin: 0.5rem;
+    display: flex;
+  justify-content: center;
+  align-items: center;
   }
   
   div.stats {
     grid-area: s;
     background-color: pink;
-    padding: 0.5rem;
+    text-align: center;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
   }
   
   .card {
-    width: 8rem;
-    height: 14rem;
-    perspective: 350px; /*el efecto 3D que hace la carta al girar*/
-    margin: 1rem;
+    /*width: 8rem;
+    height: 14rem;*/
+    perspective: 1000px; /*el efecto 3D que hace la carta al girar*/
+    margin: 0;
   }
   
   .content {
-    width: 100%;
-    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 150px;
     transition: transform 1s;
     transform-style: preserve-3d;
+    position: relative;
   }
   
   .front,
   .back {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(black, gray);
-    display: grid;
-    place-content: center;
-    font-size: 7rem;
-    border-radius: 1rem;
-    backface-visibility: hidden;
-    user-select: none;
+  width: 100px;
+  height: 150px;
+  background: linear-gradient(black, gray);
+  display: grid;
+  place-content: center;
+  font-size: 4rem;
+  border-radius: 1rem;
+  backface-visibility: hidden;
+  user-select: none;
   }
   
   .back {
@@ -89,7 +103,7 @@
     transform: rotateY(180deg);
   }
   
-  .card.flipped .content {
+  .flipped .content {
     transform: rotateY(180deg) ;
     transition: transform 0.5s;
   }
@@ -98,8 +112,9 @@
     grid-area: f;
     background-color: aquamarine;
     font-size: 1rem;
-    display: grid; 
-    place-items: center; 
+    text-align: center;
+    display: flex; 
+    justify-content: center; 
     text-align: center; 
   }
   
@@ -124,17 +139,22 @@
   }
   
   #success {
-    text-align: left;
-    margin: 20px 0;
+   display: none;
+   text-align: left;
   }
   
   #tries {
     text-align: left;
-    margin: 20px 0;
   }
   
   #errors {
     text-align: left;
-    margin: 20px 0;
   }
   
+  /*Media query para pantallas de más de 350px*/
+
+@media (min-width: 350px) {
+  body {
+    padding: 0 calc(35% - 350px); /*con esto crece el padding proporcionalmente por los lateralesS*/
+}
+}
