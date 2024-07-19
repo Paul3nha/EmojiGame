@@ -56,7 +56,7 @@ function checkForMatch() {
     successCounter++; // Incrementa el contador de aciertos
     successDisplay.textContent = `Matches: ${successCounter}`; // Actualiza el display de aciertos
 
-    if (successCounter === 8) { // 8: número total de pares en el juego
+    if (successCounter === 10) { // 10: número total de pares en el juego
       showPopup();
   }
    
@@ -95,11 +95,10 @@ function startGame() {
 }
 
 // -- SIRVE PARA PASAR AL HTML DEL NIVEL 2, LO HE LLAMADO indexLevel2.html PARA ACLARARME YO, PERO LE PODEMOS PONER COMO SEA
-nextLevelButton.addEventListener('click', ()=> {
-  window.location.href = 'index2.html';
-  });
+nextLevelButton.addEventListener('click', () => {
+    window.location.href = 'index3.html';
+    });
 
-  
 // Creamos función disableCards para deshabilitar la interactividad de las cartas seleccionadas
 function disableCards() { //las cartas se quedan boca arriba y no se pueden seleccionar más
   firstCard.removeEventListener('click', flipCard); //(evento, función que eliminas)
@@ -132,7 +131,7 @@ function resetBoard() {
 cards.forEach(card => card.addEventListener('click', flipCard)); //recorremos cards y le añadimos un evento a cada carta que se clicke
 
 // Creamos el array de emojis
-const emojis =  ['👻', '👹', '👽', '🪢', '🦋', '🎲', '💻', '🌰'];
+const emojis =  ['👻', '👹', '👽', '🪢', '🦋', '🎲', '💻', '🌰', '🐙', '🍕'];
 
 // Duplicamos el array
 const pairedEmojis = emojis.concat(emojis);  // Esto crea un array con 16 elementos (8 pares)
