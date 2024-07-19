@@ -9,19 +9,23 @@ body {
   font-weight: bold;
   justify-content: center;
   display: grid;
-  grid-template-columns: 5rem repeat(4, 1fr); 
-  grid-template-rows: 7vh repeat(4, 1fr) 2rem; 
+  /*Cambio las columnas a 1 y filas a 4*/
+  grid-template-columns: 1fr; 
+  grid-template-rows: 10vh 10vh 1fr 10vh;
+  /*Añado height para que el body ocupe la altura completa de la ventana*/
+  height: 100vh;
+ /*Me cargo el template areas que habia y lo cambio a pantalla movil*/
   grid-template-areas: 
-  "h h h h h"
-  "s c c c c"
-  "s c c c c"
-  "s c c c c"
-  "s c c c c"
-  "f f f f f";
+  "header"
+  "stats"
+  "content"
+  "footer";
 }
 
+
 header {
-  grid-area: h;
+  grid-area: header;
+  display: flex;
   background-color: blueviolet;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
@@ -30,8 +34,23 @@ header {
   align-items: center;
 }
 
+/*ajustando el ancho y el tamaño de las letras del h1*/
+header h1{
+
+  width: 100%;
+  margin: 0;
+  font-size: 1.3rem;
+
+}
+
 ul {
-  grid-area: c;
+  /*Mis añadidos*/
+  /*centrar contenido y añadiendo width 90% para dar algo de margen y max-width 100%*/
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%; /*Para asegurar que no se exceda el ancho de la pantalla*/
+
+  grid-area: content;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -44,20 +63,19 @@ ul {
   background-color: greenyellow;
   list-style-type: none;
   /*padding: 1fr;*/
-  border: 20px;
+  /*eliminando el border*/
   gap: 10px;
   padding: 10px;
 }
 
 ul li {
-  margin: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 div.stats {
-  grid-area: s;
+  grid-area: stats;
   background-color: pink;
   text-align: center;
   display: flex;
@@ -67,8 +85,9 @@ div.stats {
 }
 
 .card {
- /* width: 100px;  
-  height: 150px;    lo comentamos para cuadrar las cartas en pantalla*/
+  /*Ajustar el contentedor de la carta width y height*/
+  width: 100%;  
+  height: 100%;  
   perspective: 1000px;
   /* margin: 1rem;   quitamos margin porque ya tenemos gap entre cartas*/
   margin: 0;
@@ -76,9 +95,12 @@ div.stats {
 
 .content {
   display: flex;
+  /*Añadido justify-content para centrar las cartas*/
+  justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 150px;
+  /*Cambiando width y height al 100%*/
+  width: 100%;
+  height: 100%;
   transition: transform 1s;
   transform-style: preserve-3d;
   position: relative;
@@ -87,8 +109,9 @@ div.stats {
 .front,
 .back {
   position: absolute;
-  width: 100px;
-  height: 150px;
+  /*cambiando el width y height del .back al 100%*/
+  width: 100%;
+  height: 100%;
   background: linear-gradient(black, gray);
   display: grid;
   place-content: center;
@@ -109,13 +132,14 @@ div.stats {
 }
 
 footer {
-  grid-area: f;
+  grid-area: footer;
   background-color: aquamarine;
   font-size: 1rem;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .popup {
@@ -151,52 +175,115 @@ footer {
   text-align: left;
 }
 
-/*Mis Cambios*/
+/*------------MEDIAS QUERRY--------*/
+/*Aplicamos medias Querry para tipos de pantalla mas grandes*/
 
-    /*Añadiendo Imagen de fondo al fondo de las cartas*/
-    ul {
-      background-image: url("/images/imagenProyectoEmoji.jpg");
-      background-size: cover; /* Ajusta la imagen para cubrir todo el cuerpo */
-      background-position: center; /* Centra la imagen */
-      background-repeat: no-repeat; /* Evita que la imagen se repita */
-      height: 100vh; /* Ajusta la altura del cuerpo al 100% del viewport */
-      margin: 0; /* Elimina el margen predeterminado del cuerpo */
-      padding: 0; /* Elimina el relleno predeterminado del cuerpo */
-      }
+@media (min-width: 400px) {
+  header h1{
+    font-size: 1.6rem;
+  
+  }
+    .front,
+  .back {
+    font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+  }
+  
+  ul li .content {
+    width: 90%;
+  }
+}
 
-      /*Implementando*/
-      
-      li.card {
-        width: 100px; /* Ancho deseado del contenedor de la carta */
-        height: 150px; /* Alto deseado del contenedor de la carta */
-        border: 1px solid #ccc;
-        margin: 10px;
-        display: inline-block; /* Para que los elementos li se muestren en línea */
-      }
-      
-      .content {
-        position: relative;
-        width: 100%;
-        height: 100%;
-      }
-      
-      .front {
-        width: 100%;
-        height: 100%;
-        overflow: hidden; /* Para recortar la imagen si es necesario */
-      }
-      
-      .front img {
-        width: 100%; /* Ajusta la imagen al ancho del contenedor .front */
-        height: auto; /* Ajusta la altura automáticamente */
-      }
-    
-  /*Finalizan mis cambios*/
-
-/*Media query para pantallas de más de 350px*/
-
-@media (min-width: 350px) {
+@media (min-width: 450px) {
   body {
-    padding: 0 calc(35% - 350px); /*con esto crece el padding proporcionalmente por los lateralesS*/
+    grid-template-columns: 1fr 3fr; /* Ajuste para pantallas más grandes */
+    grid-template-rows: 10vh 1fr 10vh;
+    grid-template-areas: 
+      "header header"
+      "stats content"
+      "footer footer";
+  }
+
+  .front{
+    font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+  }
 }
+@media (min-width: 550px) {
+  .front,
+  .back {
+    font-size: 4.3rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+  }
 }
+
+@media (min-width: 650px) {
+  header h1{
+
+    font-size: 1.8rem;
+  
+  }
+  .front,
+  .back {
+    font-size: 4.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+  }
+  
+  ul li .content {
+    width: 80%;
+  }
+}
+
+
+@media (min-width: 750px) {
+  header h1{
+
+    font-size: 2rem;
+    height: 70%;
+  
+  }
+  .front,
+  .back {
+    font-size: 4.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+  }
+  
+  ul li .content {
+    width: 85%;
+  }
+}
+
+@media (min-width: 800px) {
+  .front,
+  .back {
+    font-size: 7rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+  }
+  
+  ul li .content {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .front,
+  .back {
+    font-size: 6rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+  }
+  
+}
+@media (min-width: 1500px) {
+  .front,
+  .back {
+    font-size: 7rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+  }
+  
+  ul li .content {
+    width: 50%;
+  }
+}
+@media (min-width: 2000px) {
+  .front,
+  .back {
+    font-size: 8rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+  }
+  
+  ul li .content {
+    width: 40%;
+  }
+}
+

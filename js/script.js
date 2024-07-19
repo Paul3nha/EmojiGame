@@ -125,23 +125,3 @@ backs.forEach((back, index) => {
         back.textContent = shuffledEmojis[index];
     } //si el index es menor que la longitud de shuffledEmojis, se asigna el emoji correspondiente a back.textContent.
 });
-
-
-/*- AÑADIENDO IMAGEN AL FONDO DE LAS CARTAS POR DETRÁS*/
-
-const frontElements = document.querySelectorAll('.front');
-frontElements.forEach(frontElement => {
-    // Crear un elemento de imagen
-    const imagen = document.createElement('img');
-
-    // Establecer el atributo src de la imagen
-    imagen.src = 'https://cdn.discordapp.com/attachments/1251594184931016724/1263564344650629182/carta-lateral-posterior.png?ex=669ab17f&is=66995fff&hm=1fe0d2633f7539216a3713c0f23f8b262cea9685594631729042603c648f6924&' // Ajusta la ruta de acuerdo a la ubicación de tu imagen
-
-    // Limpiar el contenido existente del elemento .front
-    frontElement.textContent = '';
-
-    // Añadir la imagen al elemento .front
-    frontElement.appendChild(imagen);
-});
-
-
