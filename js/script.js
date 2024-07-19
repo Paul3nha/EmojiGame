@@ -43,6 +43,8 @@ const popup = document.getElementById('popup'); //elemento que propia el pop up
 
 const closePopupButton = document.getElementById('close-popup'); //elemento que cerrará el pop up
 
+const restartButton = document.getElementById('restart');
+
 function checkForMatch() {
   let isMatch = firstCard.querySelector('.back').textContent === secondCard.querySelector('.back').textContent; //// Comprueba si el contenido de la parte trasera de las dos cartas es igual.
 
@@ -68,6 +70,27 @@ function showPopup() { //función que ejecutará el popUp
 closePopupButton.addEventListener('click', () => { //evento que cierra el pop up
   popup.style.display = 'none';
 });
+
+
+restartButton.addEventListener('click', () => {
+  popup.style.display = 'none';
+    startGame();
+});
+
+// Reseteamos contadores, mostramos display de los contadores a 0 y repartimos emojis a cada carta
+function startGame() {
+  triesCounter = 0;
+  errorCounter = 0;
+  successCounter = 0;
+  triesDisplay.textContent = `Intentos totales: ${triesCounter} `;
+  errorDisplay.textContent = `Errores totales: ${errorCounter}`;
+  successDisplay.textContent = `Aciertos totales: ${successCounter}`;
+
+  cards.forEach(card => {
+  card.classList.remove('flipped');
+  card.addEventListener('click', flipCard);
+});
+}
 
 // Creamos función disableCards para deshabilitar la interactividad de las cartas seleccionadas
 function disableCards() { //las cartas se quedan boca arriba y no se pueden seleccionar más
