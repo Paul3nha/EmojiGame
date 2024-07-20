@@ -18,9 +18,11 @@
 
 - Nuestro equipo ha logrado implementar lo que las consignas de Hack A Boss pedían, además, se implementan:
     - Un Pop Up al final del nivel que da las opciones de:
-        - Comenzar de nuevo el nivel (restart).
         - Subir al siguiente nivel (nex level), hasta un total de 3.
-            - Level 1: 16 cartas, 8 pares.
+            - Level 1 (default): 16 cartas, 8 pares.
             - Level 2: 20 cartas, 10 pares.
             - Level 3: 24 cartas, 12 pares.
         - Cerrar el Pop Up (close).
+        - Un menú de navegación lateral que implementa las opciones anteriores y:
+            - La opción de restart para reinicar el juego con los contadores a 0.
+            - Un apartado con más información sobre este proyecto.
