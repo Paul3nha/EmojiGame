@@ -4,30 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memoji Game</title>
-    <link rel="stylesheet" href="./css/style3.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
 
   <!-- Cada carta es una section (16 section) con 3 div: el primero es el contenedor genérico (.content), que alberga al segundo div (front) y al tercero (back) con clase content y la parte frontal y trasera de la carta en los que ponemos las transiciones .-->
 
 <body>
+  <!-- Dropdown menu -->
+  <nav class="dropdown">
+    <button class="dropbtn">☰</button>
+    <div class="dropdown-content">
+      <a href="#" id="restart">Restart</a>
+      <a href="index2.html">Level 2</a>
+      <a href="index3.html">Level 3</a>
+      <a href="#">About Us</a>
+    </div>
+  </nav>
+  <!-- Final de Dropdown menu -->
+
   <header>
     <p>🥐🧃🦑🧑🏽‍🦽‍➡️</p>
     <h1>Memoji Game</h1>
     <p>🍍🍼🔫🫏</p>
-     <!-- Dropdown menu -->
-     <nav class="dropdown">
-      <button class="dropbtn">Menu</button>
-      <div class="dropdown-content">
-        <a href="#" id="restart">Restart</a>
-        <a href="index.html">Level 1</a>
-        <a href="index2.html">Level 2</a>
-        <a href="#">About Us</a>
-      </div>
-    </nav>
   </header>
-
-  <!-- Final de Dropdown menu -->
-
+  
   <div class="stats">
     <div id="tries">Tries: 0</div>
     <div id="errors">Errors: 0</div>
