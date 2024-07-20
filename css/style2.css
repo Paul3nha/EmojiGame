@@ -15,7 +15,6 @@ body {
   font-family: "Lobster Two", sans-serif;
   font-weight: 400;
   font-style: normal;
-
   justify-content: center;
   display: grid;
   /*Modificado columnas, grid area y height*/
@@ -60,7 +59,7 @@ ul {
   grid-area: content;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   background-color: greenyellow;
   list-style-type: none;
   border: 20px;
@@ -241,6 +240,10 @@ footer {
     font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
   }
 
+  div.stats{
+    font-size: 1rem;
+  }
+
   ul li .content {
     width: 90%;
   }
@@ -248,12 +251,16 @@ footer {
 
 @media (min-width: 450px) {
   body {
-    grid-template-columns: 1fr 4fr; /* Ajuste para pantallas más grandes */
+    grid-template-columns: 0.75fr 4fr; /* Ajuste para pantallas más grandes */
     grid-template-rows: 10vh 1fr 5vh;
     grid-template-areas:
       "buttom header"
       "stats content"
       "footer footer";
+  }
+
+  div.stats {
+    font-size: 1rem;
   }
 
   .front {

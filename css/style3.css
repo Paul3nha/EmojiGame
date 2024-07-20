@@ -15,7 +15,6 @@ body {
   font-family: "Lobster Two", sans-serif;
   font-weight: 400;
   font-style: normal;
-
   justify-content: center;
   display: grid;
   /*Modificado columnas, grid area y height*/
@@ -60,7 +59,7 @@ ul {
   grid-area: content;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   background-color: greenyellow;
   list-style-type: none;
   border: 20px;
