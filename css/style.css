@@ -1,363 +1,452 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-body {
-  font-family: sans-serif;
-  font-weight: bold;
-  justify-content: center;
-  display: grid;
-  /*Cambio las columnas a 1 y filas a 4*/
-  grid-template-columns: 1fr; 
-  grid-template-rows: 10vh 10vh 1fr 10vh;
-  /*Añado height para que el body ocupe la altura completa de la ventana*/
-  height: 100vh;
- /*Me cargo el template areas que habia y lo cambio a pantalla movil*/
-  grid-template-areas: 
-  "header"
-  "stats"
-  "content"
-  "footer";
-}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    background: linear-gradient(rgb(207, 104, 211), lightsteelblue);
+    height: 100%;
+  }
+  
+  body {
+    font-family: "Lobster Two", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 
+    justify-content: center; /*hace falta de verdad?*/
+    display: grid;
+    /*Modificado columnas, grid area y height*/
+    grid-template-columns: 1fr;
+    grid-template-rows: 10vh 10vh 1fr 10vh;
+    grid-template-areas: 
+    "buttom header"
+    "stats stats"
+    "content content"
+    "footer footer";
+    height:100vh;
+  }
+  
+  header {
+    grid-area: header;
+    background-color: blueviolet;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*Elimino el padding 1rem y position static*/
+    width: 100%;
+  }
 
-header {
-  grid-area: header;
-  display: flex;
-  background-color: blueviolet;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  /*Añado ajustes para el el ancho y el tamaño de las letras del h1*/
+    header h1{
 
-/*ajustando el ancho y el tamaño de las letras del h1*/
-header h1{
-
-  width: 100%;
-  margin: 0;
-  font-size: 1.3rem;
-  align-content: center;
-
-}
-
-ul {
-  /*Mis añadidos*/
-  /*centrar contenido y añadiendo width 90% para dar algo de margen y max-width 100%*/
-  margin: 0 auto;
-  width: 100%;
-  max-width: 100%; /*Para asegurar que no se exceda el ancho de la pantalla*/
-
-  grid-area: content;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  /* grid-template-areas:
-  "c c c c"
-  "c c c c"
-  "c c c c"
-  "c c c c"
-  ;          no lo necesito porque coge las medidas del grid del body*/
-  background-color: greenyellow;
-  list-style-type: none;
-  /*padding: 1fr;*/
-  /*eliminando el border*/
-  gap: 10px;
-  padding: 10px;
-}
-
-ul li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-div.stats {
-  grid-area: stats;
-  background-color: pink;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.card {
-  /*Ajustar el contentedor de la carta width y height*/
-  width: 100%;  
-  height: 100%;  
-  perspective: 1000px;
-  /* margin: 1rem;   quitamos margin porque ya tenemos gap entre cartas*/
-  margin: 0;
-}
-
-.content {
-  display: flex;
-  /*Añadido justify-content para centrar las cartas*/
-  justify-content: center;
-  align-items: center;
-  /*Cambiando width y height al 100%*/
-  width: 100%;
-  height: 100%;
-  transition: transform 1s;
-  transform-style: preserve-3d;
-  position: relative;
-}
-
-.front,
-.back {
-  position: absolute;
-  /*cambiando el width y height del .back al 100%*/
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(black, gray);
-  display: grid;
-  place-content: center;
-  font-size: 4rem;
-  border-radius: 1rem;
-  backface-visibility: hidden;
-  user-select: none;
-}
-
-.back {
-  background: linear-gradient(steelblue, lightsteelblue);
-  transform: rotateY( 180deg );
-}
-
-.flipped .content {
-  transform: rotateY( 180deg ) ;
-  transition: transform 0.5s;
-}
-
-footer {
-  grid-area: footer;
-  background-color: aquamarine;
-  font-size: 1rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.popup {
-  display: none;
-  position: fixed;
-  z-index: 1; /*para ver el mensaje final por encima de la página*/
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-}
-
-.popup-content {
-  background-color: rgba(196, 80, 176, 0.685);
-  padding: 40px;
-  border-radius: 5px;
-  text-align: center;
-}
-
-#success {
-  display: none; /*para ocultarlo*/
-  text-align: left;
-}
-
-#tries {
-  text-align: left;
-}
-
-#errors {
-  text-align: left;
-}
-
-/*------------MEDIAS QUERRY--------*/
+    width: 100%;
+    margin: 0;
+    font-size: 1.3rem;
+    align-content: center;
+  
+  }
+  
+  ul {
+     /*centrar contenido y añadiendo width 90% para dar algo de margen y max-width 100%*/
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%; /*Para asegurar que no se exceda el ancho de la pantalla*/
+    grid-area: content;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    background-color: greenyellow;
+    list-style-type: none;
+    border: 20px;
+    gap: 10px;
+    padding: 10px;
+    height: 100%;
+  }
+  
+  ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  div.stats {
+    grid-area: stats;
+    background-color: pink;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .card {
+    /*Ajustar el contentedor de la carta width y height*/
+    width: 100%;  
+    height: 100%;  
+    perspective: 1000px;
+    margin: 0;
+  }
+  
+  .content {
+    display: flex;
+    /*Añadido justify-content para centrar las cartas*/
+    justify-content: center;
+    align-items: center;
+    /*Cambiando width y height al 100%*/
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  
+  .front,
+  .back {
+    position: absolute;
+    /*cambiando el width y height del .back al 100%*/
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(black, gray);
+    display: grid;
+    place-content: center;
+    font-size: 4rem;
+    border-radius: 1rem;
+    backface-visibility: hidden;
+    user-select: none;
+  }
+  
+  .back {
+    background: linear-gradient(steelblue, lightsteelblue);
+    transform: rotateY(180deg);
+  }
+  
+  .flipped .content {
+    transform: rotateY(180deg);
+    transition: transform 0.5s;
+  }
+  
+  footer {
+    grid-area: footer;
+    background-color: aquamarine;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*Añadido width 100% para que ocupe todo el ancho*/
+    width: 100%;
+  }
+  
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 1; /*para ver el mensaje final por encima de la página*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-content {
+    background-color: rgba(196, 80, 176, 0.685);
+    padding: 40px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  #close-popup {
+    margin: 5px;
+  }
+  
+  #success {
+    display: none; /*para ocultarlo*/
+    text-align: left;
+  }
+  
+  #tries {
+    text-align: left;
+  }
+  
+  #errors {
+    text-align: left;
+  }
+  
+  /* Base styles for the dropdown */
+  .dropdown {
+    grid-area: buttom;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropbtn {
+    background-color: blueviolet;
+    color: rgb(250, 250, 250);
+    height: 100%;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Show the dropdown content on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Change the background color of the button on hover */
+  .dropdown:hover .dropbtn {
+    background-color: #4f0b5b;
+  }
+  /*------------MEDIAS QUERRY--------*/
 /*Aplicamos medias Querry para tipos de pantalla mas grandes*/
 
 @media (min-width: 400px) {
-  header h1{
-    font-size: 1.6rem;
-  
+    header h1{
+      font-size: 1.6rem;
+    
+    }
+      .front,
+    .back {
+      font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+    }
+    
+    ul li .content {
+      width: 90%;
+    }
   }
+  
+  @media (min-width: 450px) {
+    body {
+      grid-template-columns: 1fr 3fr; /* Ajuste para pantallas más grandes */
+      grid-template-rows: 10vh 1fr 10vh;
+      grid-template-areas: 
+        "buttom header"
+        "stats content"
+        "footer footer";
+    }
+
+  
+    .front{
+      font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+    }
+  }
+  @media (min-width: 550px) {
     .front,
-  .back {
-    font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+    .back {
+      font-size: 4.3rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+    }
   }
   
-  ul li .content {
-    width: 90%;
-  }
-}
-
-@media (min-width: 450px) {
-  body {
-    grid-template-columns: 1fr 3fr; /* Ajuste para pantallas más grandes */
-    grid-template-rows: 10vh 1fr 10vh;
-    grid-template-areas: 
-      "header header"
-      "stats content"
-      "footer footer";
-  }
-
-  .front{
-    font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
-  }
-}
-@media (min-width: 550px) {
-  .front,
-  .back {
-    font-size: 4.3rem; /* Ajuste del tamaño de fuente para cartas más grandes */
-  }
-}
-
-@media (min-width: 650px) {
-  header h1{
-
-    font-size: 1.8rem;
+  @media (min-width: 650px) {
+    header h1{
   
-  }
-  .front,
-  .back {
-    font-size: 4.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+      font-size: 1.8rem;
+    
+    }
+    .front,
+    .back {
+      font-size: 4.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+    }
+    
+    ul li .content {
+      width: 80%;
+    }
   }
   
-  ul li .content {
-    width: 80%;
-  }
-}
-
-
-@media (min-width: 750px) {
-
-  body{
-    background-color: blanchedalmond;
-  }
-  header h1{
-
-    font-size: 2rem;
-    height: 70%;
-  }
-
-
   
-  ul li .content {
-    width: 85%;
-  }
-}
-
-@media (min-width: 800px) {
-
+  @media (min-width: 750px) {
   
-  ul li .content {
-    width: 80%;
-  }
-}
-
-@media (min-width: 1500px) {
+    body{
+      background-color: blanchedalmond;
+    }
+    header h1{
   
-  ul li .content {
-    width: 50%;
+      font-size: 2rem;
+      height: 70%;
+    }
+  
+  
+    
+    ul li .content {
+      width: 85%;
+    }
   }
-}
-
-@media (min-width: 2000px) {
-
-  ul li .content {
-    width: 40%;
+  
+  @media (min-width: 800px) {
+  
+    
+    ul li .content {
+      width: 80%;
+    }
   }
-}
+  @media (min-width: 1000px) {
 
+    body{
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+  
+    
+  }
 
-/*Creando modelo especifico para iPhone SE*/
-@media screen and (min-width: 375px), 
-       screen and (min-height: 667px) {
+  @media (min-width: 1500px) {
 
-      ul li .content {
-        width: 85%;
+    body{
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+
+    ul li .content {
+      width: 50%;
+    }
+  }
+  
+  @media (min-width: 2000px) {
+  
+    ul li .content {
+      width: 40%;
+    }
+
+    body{
+        padding-left: 28%;
+        padding-right: 28%;
+    }
+
+  }
+
+  @media (min-width: 2500px) {
+
+    body{
+    padding-left: 32%;
+    padding-right: 32%;
+    }
+  }
+
+  @media (min-width: 3000px) {
+
+    body{
+    padding-left: 35%;
+    padding-right: 35%;
+    }
+    ul li .content {
+        width: 35%;
       }
-
-      footer{
-        font-size: 0.8rem;
-      }
-
-}
-
-/*Creando modelo especifico para Galaxy S20 Ultra*/
-@media screen and (min-width: 375px), 
-       screen and (min-height: 667px) {
-
-      footer{
-        font-size: 1rem;
-      }
-      .stats{
-        font-size: 1.2rem;
-      }
-
-}
-
-/*Creando modelo especifico para iPad Mini*/
-
-@media screen and (width: 768px),
-       screen and (height: 1024px) {
-  header h1{
-    font-size: 2.5rem;
-        }
-  body {
-    padding: 0;
   }
-  footer{
-    font-size: 1.5rem;
-  }
-  .stats{
-    font-size: 1.5rem;
-  }
-
-}
-
-
-/*Creando modelo especifico para Nest Hub*/
-
-@media screen and (width: 1024px),
-       screen and (height: 600px) {
-        body{
-          padding-left: 15%;
-          padding-right: 15%;
-        }
-        footer{
-          font-size: 1.1rem;
-        }
+  
+  
+  /*Creando modelo especifico para iPhone SE*/
+  @media screen and (min-width: 375px), 
+         screen and (min-height: 667px) {
+  
         ul li .content {
-          width: 65%;
+          width: 85%;
         }
-        .front,
-       .back {
-          font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
-  }
-
-       }
-
-
-/*Creando modelo especifico para Nest Hub Max*/
-
-@media screen and (width: 1280px),
-       screen and (height: 800px) {
-        body{
-          padding-left: 15%;
-          padding-right: 15%;
-        }
-
+  
         footer{
-          font-size: 1.5rem;
+          font-size: 0.8rem;
         }
-        ul li .content {
-          width: 70%;
+  
+  }
+  
+  /*Creando modelo especifico para Galaxy S20 Ultra*/
+  @media screen and (min-width: 412px), 
+         screen and (min-height: 915px) {
+  
+        footer{
+          font-size: 1rem;
         }
-       }
+        .stats{
+          font-size: 1.2rem;
+        }
+  
+  }
+  
+  /*Creando modelo especifico para iPad Mini*/
+  
+  @media screen and (width: 768px),
+         screen and (height: 1024px) {
+    header h1{
+      font-size: 2.5rem;
+          }
+    body {
+      padding: 0;
+    }
+    footer{
+      font-size: 1.5rem;
+    }
+    .stats{
+      font-size: 1.5rem;
+    }
+  
+  }
+  
+  
+  /*Creando modelo especifico para Nest Hub*/
+  
+  @media screen and (width: 1024px),
+         screen and (height: 600px) {
+          body{
+            padding-left: 15%;
+            padding-right: 15%;
+          }
+          footer{
+            font-size: 1.1rem;
+          }
+          ul li .content {
+            width: 65%;
+          }
+          .front,
+         .back {
+            font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+    }
+  
+         }
 
-
-
+  
+  
+  /*Creando modelo especifico para Nest Hub Max*/
+  
+  @media screen and (width: 1280px),
+         screen and (height: 800px) {
+          body{
+            padding-left: 15%;
+            padding-right: 15%;
+          }
+  
+          footer{
+            font-size: 1.5rem;
+          }
+          ul li .content {
+            width: 70%;
+          }
+         }
+    

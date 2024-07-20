@@ -43,6 +43,10 @@ const popup = document.getElementById('popup'); //elemento que propia el pop up
 
 const closePopupButton = document.getElementById('close-popup'); //elemento que cerrará el pop up
 
+const restartButton = document.getElementById('restart');
+
+const nextLevelButton = document.getElementById('nextLevel');
+
 function checkForMatch() {
   let isMatch = firstCard.querySelector('.back').textContent === secondCard.querySelector('.back').textContent; //// Comprueba si el contenido de la parte trasera de las dos cartas es igual.
 
@@ -69,6 +73,33 @@ closePopupButton.addEventListener('click', () => { //evento que cierra el pop up
   popup.style.display = 'none';
 });
 
+
+restartButton.addEventListener('click', () => {
+  popup.style.display = 'none';
+    startGame();
+});
+
+// Reseteamos contadores, mostramos display de los contadores a 0 y repartimos emojis a cada carta
+function startGame() {
+  triesCounter = 0;
+  errorCounter = 0;
+  successCounter = 0;
+  triesDisplay.textContent = `Tries: ${triesCounter} `;
+  errorDisplay.textContent = `Errors: ${errorCounter}`;
+  successDisplay.textContent = `Matches: ${successCounter}`;
+
+  cards.forEach(card => {
+  card.classList.remove('flipped');
+  card.addEventListener('click', flipCard);
+});
+}
+
+// -- SIRVE PARA PASAR AL HTML DEL NIVEL 2, LO HE LLAMADO indexLevel2.html PARA ACLARARME YO, PERO LE PODEMOS PONER COMO SEA
+nextLevelButton.addEventListener('click', ()=> {
+  window.location.href = 'index2.html';
+  });
+
+  
 // Creamos función disableCards para deshabilitar la interactividad de las cartas seleccionadas
 function disableCards() { //las cartas se quedan boca arriba y no se pueden seleccionar más
   firstCard.removeEventListener('click', flipCard); //(evento, función que eliminas)
@@ -124,4 +155,24 @@ backs.forEach((back, index) => {
     if (index < shuffledEmojis.length) {
         back.textContent = shuffledEmojis[index];
     } //si el index es menor que la longitud de shuffledEmojis, se asigna el emoji correspondiente a back.textContent.
+});
+
+
+//Permite abrir el menu desplegable haciendo click en su botón y lo cerrará si clickamos en cualquier otra parte de la página
+document.addEventListener('DOMContentLoaded', () => {
+  const dropbtn = document.querySelector('.dropbtn');
+  const dropdownContent = document.querySelector('.dropdown-content');
+
+  dropbtn.addEventListener('click', () => {
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Close the dropdown if the user clicks outside of it
+  window.addEventListener('click', (event) => {
+    if (!event.target.matches('.dropbtn')) {
+      if (dropdownContent.style.display === 'block') {
+        dropdownContent.style.display = 'none';
+      }
+    }
+  });
 });
