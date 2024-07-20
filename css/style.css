@@ -40,6 +40,7 @@ header h1{
   width: 100%;
   margin: 0;
   font-size: 1.3rem;
+  align-content: center;
 
 }
 
@@ -232,16 +233,17 @@ footer {
 
 
 @media (min-width: 750px) {
+
+  body{
+    background-color: blanchedalmond;
+  }
   header h1{
 
     font-size: 2rem;
     height: 70%;
-  
   }
-  .front,
-  .back {
-    font-size: 4.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
-  }
+
+
   
   ul li .content {
     width: 85%;
@@ -249,41 +251,113 @@ footer {
 }
 
 @media (min-width: 800px) {
-  .front,
-  .back {
-    font-size: 7rem; /* Ajuste del tamaño de fuente para cartas más grandes */
-  }
+
   
   ul li .content {
     width: 80%;
   }
 }
 
-@media (min-width: 1000px) {
-  .front,
-  .back {
-    font-size: 6rem; /* Ajuste del tamaño de fuente para cartas más grandes */
-  }
-  
-}
 @media (min-width: 1500px) {
-  .front,
-  .back {
-    font-size: 7rem; /* Ajuste del tamaño de fuente para cartas más grandes */
-  }
   
   ul li .content {
     width: 50%;
   }
 }
+
 @media (min-width: 2000px) {
-  .front,
-  .back {
-    font-size: 8rem; /* Ajuste del tamaño de fuente para cartas más grandes */
-  }
-  
+
   ul li .content {
     width: 40%;
   }
 }
+
+
+/*Creando modelo especifico para iPhone SE*/
+@media screen and (min-width: 375px), 
+       screen and (min-height: 667px) {
+
+      ul li .content {
+        width: 85%;
+      }
+
+      footer{
+        font-size: 0.8rem;
+      }
+
+}
+
+/*Creando modelo especifico para Galaxy S20 Ultra*/
+@media screen and (min-width: 375px), 
+       screen and (min-height: 667px) {
+
+      footer{
+        font-size: 1rem;
+      }
+      .stats{
+        font-size: 1.2rem;
+      }
+
+}
+
+/*Creando modelo especifico para iPad Mini*/
+
+@media screen and (width: 768px),
+       screen and (height: 1024px) {
+  header h1{
+    font-size: 2.5rem;
+        }
+  body {
+    padding: 0;
+  }
+  footer{
+    font-size: 1.5rem;
+  }
+  .stats{
+    font-size: 1.5rem;
+  }
+
+}
+
+
+/*Creando modelo especifico para Nest Hub*/
+
+@media screen and (width: 1024px),
+       screen and (height: 600px) {
+        body{
+          padding-left: 15%;
+          padding-right: 15%;
+        }
+        footer{
+          font-size: 1.1rem;
+        }
+        ul li .content {
+          width: 65%;
+        }
+        .front,
+       .back {
+          font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+  }
+
+       }
+
+
+/*Creando modelo especifico para Nest Hub Max*/
+
+@media screen and (width: 1280px),
+       screen and (height: 800px) {
+        body{
+          padding-left: 15%;
+          padding-right: 15%;
+        }
+
+        footer{
+          font-size: 1.5rem;
+        }
+        ul li .content {
+          width: 70%;
+        }
+       }
+
+
 
