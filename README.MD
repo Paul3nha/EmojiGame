@@ -1,4 +1,4 @@
-                     Emoji Game
+🥐🧃🦑🧑🏽‍🦽‍➡️ Emoji Game 🍍🍼🔫🫏
 
 - Descripción de juego: juego de memoria donde se muestran 16 cartas tapadas, que conforman 8 parejas, las cuales se pueden destapar de dos en dos hasta revelar todas.
 
@@ -16,4 +16,11 @@
     - El juego debe llevar la cuenta de los intentos realizados.
     - El resultado final es el número de intentos realizados. Cuanto mejor sea esa puntuación (como mínimo puede ser 8) mejor.
 
-- Nuestro equipo ha logrado implementar lo que las consignas de Hack A Boss pedían, además de añadir...
+- Nuestro equipo ha logrado implementar lo que las consignas de Hack A Boss pedían, además, se implementan:
+    - Un Pop Up al final del nivel que da las opciones de:
+        - Comenzar de nuevo el nivel (restart).
+        - Subir al siguiente nivel (nex level), hasta un total de 3.
+            - Level 1: 16 cartas, 8 pares.
+            - Level 2: 20 cartas, 10 pares.
+            - Level 3: 24 cartas, 12 pares.
+        - Cerrar el Pop Up (close).
