@@ -10,14 +10,14 @@ body {
   justify-content: center;
   display: grid;
   grid-template-columns: 5rem repeat(4, 1fr); 
-  grid-template-rows: 7vh repeat(4, 1fr) 2rem; 
+  grid-template-rows: 7vh 4vh repeat(3, 1fr) 2rem; 
   grid-template-areas: 
-  "h h h h h"
-  "s c c c c"
-  "s c c c c"
-  "s c c c c"
-  "s c c c c"
-  "f f f f f";
+        "h h h h h"
+        "s s s s s"
+        "c c c c c"
+        "c c c c c"
+        "c c c c c"
+        "f f f f f";
 }
 
 header {
@@ -123,10 +123,14 @@ footer {
 
 .popup-content {
   background-color: rgba(196, 80, 176, 0.685);
-  padding: 40px;
+  padding: auto;
   border-radius: 5px;
   text-align: center;
   width: 30%;
+}
+
+#close-popup {
+  margin: 5px;
 }
 
 #success {
@@ -141,6 +145,63 @@ footer {
 #errors {
   text-align: left;
 }
+
+/* Media query para iPhone XR o pantallas de hasta 800px (lo que se condiera movil segun lo visto en clase)*/
+@media screen and (max-width: 800px) {
+  body {
+    height: 900px; /*con esto consegui empujar hacia abajo todo, xq esta pantalla son 896px*/
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 5% 80% 5%;  /*auto*/
+    grid-template-areas: 
+        "h"
+        "s"
+        "c"
+        "f";        
+  }
+  
+  ul {
+    height: 100%; /*importante para estirar hacia abajo la página*/
+  }
+  
+  p{
+    font-size: 2rem;
+  }
+
+  div.stats {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .card {
+    perspective: 300px;
+  }
+
+  .content {
+    width: 75px;
+    height: 130px;
+  }
+
+  .front, 
+  .back {
+    width: 75px;
+    height: 130px;
+  }
+
+  footer {
+    font-size: 0.75rem;
+    padding-bottom: 1rem; /* Añade más espacio en la parte inferior */
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
 @media (min-width: 350px) {
   body {
