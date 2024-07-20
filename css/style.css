@@ -1,7 +1,12 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  background: linear-gradient(rgb(207, 104, 211), lightsteelblue);
+  height: 100%;
 }
 
 body {
@@ -9,26 +14,30 @@ body {
   font-weight: bold;
   justify-content: center; /*hace falta de verdad?*/
   display: grid;
-  grid-template-columns: 5rem repeat(4, 1fr); 
-  grid-template-rows: 7vh repeat(4, 1fr) 2rem; 
-  grid-template-areas: 
-  "h h h h h"
-  "s c c c c"
-  "s c c c c"
-  "s c c c c"
-  "s c c c c"
-  "f f f f f";
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "m h"
+    "s c"
+    "f f";
+
+  position:relative;
+  width:auto;
+  height:auto;
 }
 
 header {
   grid-area: h;
   background-color: blueviolet;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem; /*hace falta?*/
+  position: static;
+  width: 100%;
 }
 
 ul {
@@ -41,6 +50,7 @@ ul {
   border: 20px;
   gap: 10px;
   padding: 10px;
+  height: 100%;
 }
 
 ul li {
@@ -58,6 +68,7 @@ div.stats {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100%;
 }
 
 .card {
@@ -91,11 +102,11 @@ div.stats {
 
 .back {
   background: linear-gradient(steelblue, lightsteelblue);
-  transform: rotateY( 180deg );
+  transform: rotateY(180deg);
 }
 
 .flipped .content {
-  transform: rotateY( 180deg ) ;
+  transform: rotateY(180deg);
   transition: transform 0.5s;
 }
 
@@ -146,20 +157,20 @@ footer {
   text-align: left;
 }
 
-
-
-
 /* Base styles for the dropdown */
 .dropdown {
+  grid-area: m;
   position: relative;
   display: inline-block;
 }
 
 .dropbtn {
-  background-color: #009879;
-  color: white;
+  background-color: blueviolet;
+  color: rgb(250, 250, 250);
+  height: 100%;
+  width: 100%;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 2rem;
   border: none;
   cursor: pointer;
 }
@@ -169,7 +180,7 @@ footer {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -191,31 +202,26 @@ footer {
 
 /* Change the background color of the button on hover */
 .dropdown:hover .dropbtn {
-  background-color: #006f56;
+  background-color: #4f0b5b;
 }
-
-
-
-
 /* Media query para iPhone XR o pantallas de hasta 800px (lo que se condiera movil segun lo visto en clase)*/
 @media screen and (max-width: 800px) {
   body {
     height: 900px; /*con esto consegui empujar hacia abajo todo, xq esta pantalla son 896px*/
     grid-template-columns: 1fr;
-    grid-template-rows: 10% 5% 80% 5%;  /*auto*/
-    grid-template-areas: 
-        "h"
-        "s"
-        "c"
-        "f"
-        ;
+    grid-template-rows: 10% 5% 80% 5%; /*auto*/
+    grid-template-areas:
+      "h"
+      "s"
+      "c"
+      "f";
   }
-  
+
   ul {
     height: 100%; /*importante para estirar hacia abajo la página*/
   }
-  
-  p{
+
+  p {
     font-size: 2rem;
   }
 
@@ -233,7 +239,7 @@ footer {
     height: 130px;
   }
 
-  .front, 
+  .front,
   .back {
     width: 75px;
     height: 130px;
@@ -242,5 +248,7 @@ footer {
   footer {
     font-size: 0.75rem;
     padding-bottom: 1rem; /* Añade más espacio en la parte inferior */
+    bottom: 0;
+    position: absolute;
   }
 }
