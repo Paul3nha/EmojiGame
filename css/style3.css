@@ -1,224 +1,231 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  font-weight: bold;
+  justify-content: center; /*hace falta de verdad?*/
+  display: grid;
+  grid-template-columns: 5rem repeat(4, 1fr); 
+  grid-template-rows: 7vh repeat(4, 1fr) 2rem; 
+  grid-template-areas: 
+  "h h h h h"
+  "s c c c c"
+  "s c c c c"
+  "s c c c c"
+  "s c c c c"
+  "f f f f f";
+   /*
+  background-color: yellowgreen;
+  min-height: 100vh;
   
+  Nos aseguramos que el body ocupe la altura de la pantalla, quizás no queda el footer por ahí descuadrado
+  
+  */
+}
+
+header {
+  grid-area: h;
+  background-color: blueviolet;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem; /*hace falta?*/
+}
+
+ul {
+  grid-area: c;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  background-color: greenyellow;
+  list-style-type: none;
+  border: 20px;
+  gap: 10px;
+  padding: 10px;
+}
+
+ul li {
+  margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.stats {
+  grid-area: s;
+  background-color: pink;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card {
+  perspective: 1000px;
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 150px;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100px;
+  height: 150px;
+  background: linear-gradient(black, gray);
+  display: grid;
+  place-content: center;
+  font-size: 4rem;
+  border-radius: 1rem;
+  backface-visibility: hidden;
+  user-select: none;
+}
+
+.back {
+  background: linear-gradient(steelblue, lightsteelblue);
+  transform: rotateY( 180deg );
+}
+
+.flipped .content {
+  transform: rotateY( 180deg ) ;
+  transition: transform 0.5s;
+}
+
+footer {
+  grid-area: f;
+  background-color: aquamarine;
+  font-size: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1; /*para ver el mensaje final por encima de la página*/
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: rgba(196, 80, 176, 0.685);
+  padding: 40px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#close-popup {
+  margin: 5px;
+}
+
+#success {
+  display: none; /*para ocultarlo*/
+  text-align: left;
+}
+
+#tries {
+  text-align: left;
+}
+
+#errors {
+  text-align: left;
+}
+
+/* Media query para iPhone XR o pantallas de hasta 800px (lo que se considera movil segun lo visto en clase)*/
+/*iPhone XR 414x 896px*/
+@media screen and (max-width: 414px),
+screen and (max-height: 896px) {
   body {
-    font-family: sans-serif;
-    font-weight: bold;
-    justify-content: center; /*hace falta de verdad?*/
-    display: grid;
-    grid-template-columns: 5rem repeat(4, 1fr); 
-    grid-template-rows: 7vh repeat(4, 1fr) 2rem; 
+     /*con esto consegui empujar hacia abajo todo, xq esta pantalla son 896px*/
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 5% 80% 5%;  /*auto*/
     grid-template-areas: 
-    "h h h h h"
-    "s c c c c"
-    "s c c c c"
-    "s c c c c"
-    "s c c c c"
-    "f f f f f";
-  }
-  
-  header {
-    grid-area: h;
-    background-color: blueviolet;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem; /*hace falta?*/
+        "h"
+        "s"
+        "c"
+        "f"
+        ;
   }
   
   ul {
-    grid-area: c;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    background-color: greenyellow;
-    list-style-type: none;
-    border: 20px;
-    gap: 10px;
-    padding: 10px;
+    height: 70%; /*importante para estirar hacia abajo la página*/
   }
   
-  ul li {
-    margin: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  p{
+    font-size: 2rem;
   }
-  
+
   div.stats {
-    grid-area: s;
-    background-color: pink;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .card {
-    perspective: 1000px;
-    margin: 0;
-  }
-  
-  .content {
-    display: flex;
-    align-items: center;
-    width: 100px;
-    height: 150px;
-    transition: transform 1s;
-    transform-style: preserve-3d;
-    position: relative;
-  }
-  
-  .front,
-  .back {
-    position: absolute;
-    width: 100px;
-    height: 150px;
-    background: linear-gradient(black, gray);
-    display: grid;
-    place-content: center;
-    font-size: 4rem;
-    border-radius: 1rem;
-    backface-visibility: hidden;
-    user-select: none;
-  }
-  
-  .back {
-    background: linear-gradient(steelblue, lightsteelblue);
-    transform: rotateY( 180deg );
-  }
-  
-  .flipped .content {
-    transform: rotateY( 180deg ) ;
-    transition: transform 0.5s;
-  }
-  
-  footer {
-    grid-area: f;
-    background-color: aquamarine;
     font-size: 1rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 1rem;
   }
-  
-  .popup {
-    display: none;
-    position: fixed;
-    z-index: 1; /*para ver el mensaje final por encima de la página*/
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
+
+  .card {
+    perspective: 300px;
   }
-  
-  .popup-content {
-    background-color: rgba(196, 80, 176, 0.685);
-    padding: 40px;
-    border-radius: 5px;
-    text-align: center;
+
+  .content {
+    width: 75px;
+    height: 130px;
   }
-  
-  #close-popup {
-    margin: 5px;
+
+  .front, 
+  .back {
+    width: 75px;
+    height: 130px;
   }
-  
-  #success {
-    display: none; /*para ocultarlo*/
-    text-align: left;
+
+  footer {
+    font-size: 0.75rem;
+    padding-bottom: 1rem; /* Añade más espacio en la parte inferior */
   }
-  
-  #tries {
-    text-align: left;
+}
+
+/*iPhone 12 Pro 390x844px
+
+
+/*Samsung Galaxy S20 Ultra 412x915px
+@media screen and (max-height: 915px),
+screen and (max-width: 412px) {
+  ul {
+    height: 100%; /*importante para estirar hacia abajo la página
+  } 
+
+  footer{
+    height: 135%;
   }
-  
-  #errors {
-    text-align: left;
+}
+
+/*iPhone 14 Pro Max 430x932px
+@media screen and (max-height: 932px),
+screen and (max-width: 430px) {
+  body{
+    height: 940px;
+    width: 432px;
   }
-  
-  /* Media query para iPhone XR o pantallas de hasta 800px (lo que se considera movil segun lo visto en clase)*/
-  /*iPhone XR 414x 896px*/
-  @media screen and (max-width: 414px),
-  screen and (max-height: 896px) {
-    body {
-       /*con esto consegui empujar hacia abajo todo, xq esta pantalla son 896px*/
-      grid-template-columns: 1fr;
-      grid-template-rows: 10% 5% 80% 5%;  /*auto*/
-      grid-template-areas: 
-          "h"
-          "s"
-          "c"
-          "f"
-          ;
-    }
-    
-    ul {
-      height: 70%; /*importante para estirar hacia abajo la página*/
-    }
-    
-    p{
-      font-size: 2rem;
-    }
-  
-    div.stats {
-      font-size: 1rem;
-      padding: 1rem;
-    }
-  
-    .card {
-      perspective: 300px;
-    }
-  
-    .content {
-      width: 75px;
-      height: 130px;
-    }
-  
-    .front, 
-    .back {
-      width: 75px;
-      height: 130px;
-    }
-  
-    footer {
-      font-size: 0.75rem;
-      padding-bottom: 1rem; /* Añade más espacio en la parte inferior */
-    }
-  }
-  
-  /*iPhone 12 Pro 390x844px
-  
-  
-  /*Samsung Galaxy S20 Ultra 412x915px
-  @media screen and (max-height: 915px),
-  screen and (max-width: 412px) {
-    ul {
-      height: 100%; /*importante para estirar hacia abajo la página
-    } 
-  
-    footer{
-      height: 135%;
-    }
-  }
-  
-  /*iPhone 14 Pro Max 430x932px
-  @media screen and (max-height: 932px),
-  screen and (max-width: 430px) {
-    body{
-      height: 940px;
-      width: 432px;
-    }
-  }
-  
-  
-  */
+}
+
+
+*/

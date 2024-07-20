@@ -37,18 +37,18 @@ function flipCard() {
   checkForMatch(); //// Llama a la función checkForMatch para comprobar si las cartas coinciden.
 }
 
-//Función checkForMatch() comprueba si las cartas clickadas coinciden para dejarlas boca arriba (disabledCards()) o volverlas a voltear (unflipCards())
+//Función checkForMatch() comprueba si las cartas clickadas coinciden para dejarlas boca arriba (disableCards()) o volverlas a voltear (unflipCards())
 
-const popup = document.getElementById('popup'); //elemento que propia el pop up
+const popup = document.getElementById('popup'); //elemento que propicia el pop up
 
 const closePopupButton = document.getElementById('close-popup'); //elemento que cerrará el pop up
 
 const restartButton = document.getElementById('restart');
 
-const nextLevelButton = document.getElementById('nextLevel');
+//ya no hay más niveles, se elimina botón next level
 
 function checkForMatch() {
-  let isMatch = firstCard.querySelector('.back').textContent === secondCard.querySelector('.back').textContent; //// Comprueba si el contenido de la parte trasera de las dos cartas es igual.
+  let isMatch = firstCard.querySelector('.back').textContent === secondCard.querySelector('.back').textContent; // Comprueba si el contenido de la parte trasera de las dos cartas es igual.
 
   if (isMatch) {
     disableCards();
@@ -56,7 +56,7 @@ function checkForMatch() {
     successCounter++; // Incrementa el contador de aciertos
     successDisplay.textContent = `Matches: ${successCounter}`; // Actualiza el display de aciertos
 
-    if (successCounter === 10) { // 10: número total de pares en el juego
+    if (successCounter === 12) { // 12: número total de pares en el juego
       showPopup();
   }
    
@@ -70,8 +70,8 @@ function showPopup() { //función que ejecutará el popUp
 }
 
 closePopupButton.addEventListener('click', () => { //evento que cierra el pop up
-  popup.style.display = 'none';
-});
+    popup.style.display = 'none';
+  });
 
 
 restartButton.addEventListener('click', () => {
@@ -93,11 +93,6 @@ function startGame() {
   card.addEventListener('click', flipCard);
 });
 }
-
-//para pasar al html del nivel 2 (indexLevel2.html).
-nextLevelButton.addEventListener('click', () => {
-    window.location.href = 'index3.html';
-    });
 
 // Creamos función disableCards para deshabilitar la interactividad de las cartas seleccionadas
 function disableCards() { //las cartas se quedan boca arriba y no se pueden seleccionar más
@@ -131,10 +126,10 @@ function resetBoard() {
 cards.forEach(card => card.addEventListener('click', flipCard)); //recorremos cards y le añadimos un evento a cada carta que se clicke
 
 // Creamos el array de emojis
-const emojis =  ['👻', '👹', '👽', '🪢', '🦋', '🎲', '💻', '🌰', '🐙', '🍕'];
+const emojis =  ['👻', '👹', '👽', '🪢', '🦋', '🎲', '💻', '🌰', '🐙', '🍕', '🐐', '🚁'];
 
 // Duplicamos el array
-const pairedEmojis = emojis.concat(emojis);  // Esto crea un array con 20 elementos (10 pares)
+const pairedEmojis = emojis.concat(emojis);  // Esto crea un array con 24 elementos (12 pares)
 
 // Mezclamos el array con el método Fisher-Yate, que baraja las cartas
 function shuffle(array) { //esta función coge el array que le indiques y lo recorre desde el final al inicio
@@ -155,4 +150,3 @@ backs.forEach((back, index) => {
         back.textContent = shuffledEmojis[index];
     } //si el index es menor que la longitud de shuffledEmojis, se asigna el emoji correspondiente a back.textContent.
 });
-
