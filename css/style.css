@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Lobster", sans-serif;
+  src: url(https://fonts.googleapis.com/css2?family=Lobster&display=swap);
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 * {
   margin: 0;
   padding: 0;
