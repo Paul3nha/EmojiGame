@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+body{
+    margin: 10px;
+    background-image: image();
+}
+
+h1 {
+    color: white;
+    background-color: blue;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+h2 {
+    padding: 20px;
+}
+
+ul {
+    padding: 40px;
+}
