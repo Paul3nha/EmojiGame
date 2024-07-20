@@ -1,6 +1,6 @@
-🥐🧃🦑🧑🏽‍🦽‍➡️ Emoji Game 🍍🍼🔫🫏
+🥐🧃🦑🧑🏽‍🦽‍➡️ Memoji Game 🍍🍼🔫🫏
 
-- Descripción de juego: juego de memoria donde se muestran 16 cartas tapadas, que conforman 8 parejas, las cuales se pueden destapar de dos en dos hasta revelar todas.
+- Descripción del juego: juego de memoria donde se muestran 16 cartas tapadas, que conforman 8 parejas, las cuales se pueden destapar de dos en dos hasta revelar todas.
 
 - Integrantes del equipo de desarrollo: Diego Iván García Calmaestra, Paula Fernández Rivera, Rodrigo Usín Díaz y Adrián López Rodríguez.
 

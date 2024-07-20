@@ -145,6 +145,61 @@
   #errors {
     text-align: left;
   }
+
+
+  
+/* Base styles for the dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #009879;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown content on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the button on hover */
+.dropdown:hover .dropbtn {
+  background-color: #006f56;
+}
+
+
+
+
+
+
+
+
   
   /* Media query para iPhone XR o pantallas de hasta 800px (lo que se condiera movil segun lo visto en clase)*/
   @media screen and (max-width: 800px) {
