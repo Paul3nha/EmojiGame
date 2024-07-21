@@ -256,6 +256,15 @@ footer {
       "footer footer";
   }
 
+  div.stats {
+    /*Añadiendo Imagen de fondo al fondo de las cartas*/
+    background-image: url("/img/fondo.jpg");
+    background-size: cover; /* Ajusta la imagen para cubrir todo el cuerpo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    height: 100vh; /* Ajusta la altura del cuerpo al 100% del viewport */
+  }
+
   .front {
     font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
   }
