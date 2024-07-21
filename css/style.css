@@ -18,7 +18,6 @@ body {
   font-style: normal;
   justify-content: center;
   display: grid;
-  /*Modificado columnas, grid area y height*/
   grid-template-columns: 20vw 1fr;
   grid-template-rows: 10vh 6.5vh 1fr 5vh;
   grid-template-areas:
@@ -59,6 +58,7 @@ ul {
   max-width: 100%; /*Para asegurar que no se exceda el ancho de la pantalla*/
   grid-area: content;
   display: grid;
+  /*Añadido*/ 
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   background-color: rgb(167, 228, 77);
@@ -105,6 +105,8 @@ div.stats {
   transition: transform 1s;
   transform-style: preserve-3d;
   position: relative;
+
+
 }
 
 .front,
@@ -258,6 +260,14 @@ footer {
 
   .front {
     font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+  }
+  .stats{
+    /*Añadiendo Imagen de fondo al fondo de las cartas*/
+    background-image: url("/img/imagenProyectoEmoji.jpg");
+    background-size: cover; /* Ajusta la imagen para cubrir todo el cuerpo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    height: 100vh; /* Ajusta la altura del cuerpo al 100% del viewport */
   }
 }
 

@@ -66,6 +66,7 @@ ul {
   gap: 10px;
   padding: 10px;
   height: 100%;
+
 }
 
 ul li {
@@ -261,6 +262,12 @@ footer {
 
   div.stats {
     font-size: 1rem;
+    /*Añadiendo Imagen de fondo al fondo de las cartas*/
+    background-image: url("/img/imagenProyectoEmoji.jpg");
+    background-size: cover; /* Ajusta la imagen para cubrir todo el cuerpo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    height: 100vh; /* Ajusta la altura del cuerpo al 100% del viewport */
   }
 
   .front {
