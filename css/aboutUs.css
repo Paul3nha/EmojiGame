@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -8,6 +10,7 @@ body{
     margin: 10px;
     font-size: 0.75rem;
     background-color: rgb(198, 231, 150);
+    font-family: 'Roboto', sans-serif;
 }
 
 h1 {
@@ -25,4 +28,18 @@ h2 {
 
 ul {
     padding: 40px;
+}
+
+body a {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    background-color: pink;
+    color: black;
+    list-style: none;
+    border: 3px  rgb(179, 150, 206) solid;
+    border-radius: 2rem;
+    text-decoration: none; /* Elimina el subrayado predeterminado */
+    padding: 10px; /* Añade relleno para mejorar la apariencia */
+    margin: 0 auto; /* Centra horizontalmente el enlace */
 }
