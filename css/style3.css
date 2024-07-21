@@ -9,7 +9,6 @@
 html {
   background-color: linear-gradient(rgb(207, 104, 211), rgb(29, 178, 194));
   height: 100%;
-  width: 100%;
 }
 
 body {
@@ -60,7 +59,7 @@ ul {
   grid-area: content;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   background-color: rgb(167, 228, 77);
   list-style-type: none;
   border: 20px;
@@ -304,6 +303,10 @@ footer {
 }
 
 @media (min-width: 1000px) {
+  html {
+    background-color: linear-gradient(rgb(207, 104, 211), rgb(29, 178, 194));
+  }
+
   body {
     padding-left: 10%;
     padding-right: 10%;

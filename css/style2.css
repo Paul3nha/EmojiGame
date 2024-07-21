@@ -9,7 +9,6 @@
 html {
   background-color: linear-gradient(rgb(207, 104, 211), rgb(29, 178, 194));
   height: 100%;
-  width: 100%;
 }
 
 body {
@@ -31,7 +30,7 @@ body {
 
 header {
   grid-area: header;
-  background-color: rgb(179, 150, 206);
+  background-color:  rgb(179, 150, 206);
   text-align: center;
   display: flex;
   justify-content: center;
@@ -60,7 +59,7 @@ ul {
   grid-area: content;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   background-color: rgb(167, 228, 77);
   list-style-type: none;
   border: 20px;
@@ -134,7 +133,7 @@ div.stats {
 
 footer {
   grid-area: footer;
-  background-color: rgb(179, 150, 206);
+  background-color:  rgb(179, 150, 206);
   font-size: 1rem;
   text-align: center;
   display: flex;
@@ -189,7 +188,7 @@ footer {
 }
 
 .dropbtn {
-  background-color: rgb(179, 150, 206);
+  background-color:  rgb(179, 150, 206);
   color: rgb(250, 250, 250);
   height: 100%;
   width: 100%;
@@ -241,6 +240,10 @@ footer {
     font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
   }
 
+  div.stats{
+    font-size: 1rem;
+  }
+
   ul li .content {
     width: 90%;
   }
@@ -248,12 +251,16 @@ footer {
 
 @media (min-width: 450px) {
   body {
-    grid-template-columns: 1fr 4fr; /* Ajuste para pantallas más grandes */
+    grid-template-columns: 0.75fr 4fr; /* Ajuste para pantallas más grandes */
     grid-template-rows: 10vh 1fr 5vh;
     grid-template-areas:
       "buttom header"
       "stats content"
       "footer footer";
+  }
+
+  div.stats {
+    font-size: 1rem;
   }
 
   .front {
@@ -304,6 +311,10 @@ footer {
 }
 
 @media (min-width: 1000px) {
+  html {
+    background-color: linear-gradient(rgb(207, 104, 211), rgb(29, 178, 194));
+  }
+
   body {
     padding-left: 10%;
     padding-right: 10%;
