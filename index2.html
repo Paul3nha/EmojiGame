@@ -8,7 +8,7 @@
     <link rel="icon" href="./img/calamar.png" type="image/x-icon">
   </head>
 
-  <!-- Cada carta es una section (16 section) con 3 div: el primero es el contenedor genérico (.content), que alberga al segundo div (front) y al tercero (back) con clase content y la parte frontal y trasera de la carta en los que ponemos las transiciones .-->
+ <!-- Las cartas se disponen dentro de una lista desordenada (un 'ul' con 16 'li'). Cada una cuenta con 3 div: el 1ro es el contenedor genérico (.content), que alberga al 2do div (front) y al 3ro (back)-->
 
 <body>
   <!-- Dropdown menu -->
@@ -21,7 +21,6 @@
       <a href="aboutUs.html">About Us</a>
     </div>
   </nav>
-
   <!-- Final de Dropdown menu -->
 
   <header>
@@ -30,12 +29,14 @@
     <p>🍍🍼🔫🫏</p>
   </header>
 
+  <!-- Estadísticas con contadores -->
   <div class="stats">
     <div id="tries">Tries: 0</div>
     <div id="errors">Errors: 0</div>
     <div id="success"></div>
   </div> 
 
+  <!-- PopUp de aciertos -->
   <div id="popup" class="popup">
     <div class="popup-content">
         <p>🧃🦑🥐🧑🏽‍🦽‍➡️</p>
@@ -46,6 +47,7 @@
     </div>
   </div>
 
+  <!-- Disposición de las cartas -->
   <ul>
     <li class="card">
       <div class="content">
@@ -190,6 +192,7 @@
   </ul>
 
 <script src="./js/script2.js"></script>
+
 <footer>This game was created by: Diego, Paula, Adrián y Rodrigo</footer>
 </body>
 </html>
