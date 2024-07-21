@@ -34,7 +34,7 @@ body a {
     display: flex;
     justify-content: center;
     font-size: 1.5rem;
-    background-color: pink;
+    background-color: rgb(133, 222, 194);
     color: black;
     list-style: none;
     border: 3px  rgb(179, 150, 206) solid;
