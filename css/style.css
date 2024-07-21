@@ -77,7 +77,7 @@ ul li {
 
 div.stats {
   grid-area: stats;
-  background-color: pink;
+  background-color: rgb(133, 222, 194);
   text-align: center;
   display: flex;
   justify-content: center;
