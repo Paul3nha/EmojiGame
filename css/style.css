@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 * {
   margin: 0;
@@ -6,19 +6,16 @@
   box-sizing: border-box;
 }
 
-html {
+html,
+body {
   background-color: linear-gradient(rgb(207, 104, 211), rgb(29, 178, 194));
   height: 100%;
   width: 100%;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
-  font-family: "Lobster Two", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  justify-content: center;
   display: grid;
-  /*Modificado columnas, grid area y height*/
   grid-template-columns: 20vw 1fr;
   grid-template-rows: 10vh 6.5vh 1fr 5vh;
   grid-template-areas:
@@ -27,6 +24,7 @@ body {
     "content content"
     "footer footer";
   height: 100vh;
+  justify-content: center;
 }
 
 header {
@@ -36,16 +34,13 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  /*Elimino el padding 1rem y position static*/
   width: 100%;
 }
 
-/*Añado ajustes para el el ancho y el tamaño de las letras del h1*/
 header h1 {
   width: 100%;
   margin: 0;
   font-size: 1.5rem;
-  align-content: center;
 }
 
 p {
@@ -53,20 +48,38 @@ p {
 }
 
 ul {
-  /*centrar contenido y añadiendo width 90% para dar algo de margen y max-width 100%*/
   margin: 0 auto;
   width: 100%;
-  max-width: 100%; /*Para asegurar que no se exceda el ancho de la pantalla*/
-  grid-area: content;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  background-color: rgb(167, 228, 77);
+  max-width: 100%;
   list-style-type: none;
   border: 20px;
   gap: 10px;
   padding: 10px;
   height: 100%;
+}
+
+/* 16 cartas (4x4) */
+.grid-4x4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  background-color: rgb(167, 228, 77);
+}
+
+/* 20 cartas (5x4) */
+.grid-5x4 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  background-color: rgb(167, 228, 77);
+}
+
+/* 24 cartas (6x4) */
+.grid-6x4 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  background-color: rgb(167, 228, 77);
 }
 
 ul li {
@@ -86,8 +99,8 @@ div.stats {
   height: 100%;
 }
 
+/*Tamaño de la carta*/
 .card {
-  /*Ajustar el contentedor de la carta width y height*/
   width: 100%;
   height: 100%;
   perspective: 1000px;
@@ -96,10 +109,8 @@ div.stats {
 
 .content {
   display: flex;
-  /*Añadido justify-content para centrar las cartas*/
   justify-content: center;
   align-items: center;
-  /*Cambiando width y height al 100%*/
   width: 100%;
   height: 100%;
   transition: transform 1s;
@@ -110,7 +121,6 @@ div.stats {
 .front,
 .back {
   position: absolute;
-  /*cambiando el width y height del .back al 100%*/
   width: 100%;
   height: 100%;
   background: linear-gradient(rgb(53, 49, 49), gray);
@@ -140,14 +150,13 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  /*Añadido width 100% para que ocupe todo el ancho*/
   width: 100%;
 }
 
 .popup {
   display: none;
   position: fixed;
-  z-index: 1; /*para ver el mensaje final por encima de la página*/
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
@@ -168,20 +177,12 @@ footer {
   margin: 5px;
 }
 
-#success {
-  display: none; /*para ocultarlo*/
-  text-align: left;
-}
-
-#tries {
-  text-align: left;
-}
-
+#success,
+#tries,
 #errors {
   text-align: left;
 }
 
-/* Base styles for the dropdown */
 .dropdown {
   grid-area: buttom;
   position: relative;
@@ -219,19 +220,17 @@ footer {
   background-color: #b376dd;
 }
 
-/* Show the dropdown content on hover */
+/*bloquear el contenido si el ratón lo apunta*/
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Change the background color of the button on hover */
+/* cambiar el color de fondo si situas el ratón encima */
 .dropdown:hover .dropbtn {
   background-color: #4f0b5b;
 }
 
-/*------------MEDIAS QUERRY--------*/
-/*Aplicamos medias Querry para tipos de pantalla mas grandes*/
-
+/*------------MEDIAS QUERIES--------*/
 @media (min-width: 400px) {
   header h1 {
     font-size: 1.6rem;
@@ -255,16 +254,16 @@ footer {
       "stats content"
       "footer footer";
   }
-  
+
   .front {
-    font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+    font-size: 3.5rem;
   }
 }
 
 @media (min-width: 550px) {
   .front,
   .back {
-    font-size: 4.3rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+    font-size: 4.3rem;
   }
 }
 
@@ -274,7 +273,7 @@ footer {
   }
   .front,
   .back {
-    font-size: 4.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+    font-size: 4.5rem;
   }
 
   ul li .content {
@@ -312,7 +311,7 @@ footer {
 
 @media (min-width: 1200px) {
   body {
-    grid-template-columns: 1fr 5fr; /* Ajuste para pantallas más grandes */
+    grid-template-columns: 1fr 5fr;
     grid-template-rows: 10vh 1fr 5vh;
   }
 }
@@ -357,7 +356,7 @@ footer {
   }
 }
 
-/*Creando modelo especifico para iPhone SE*/
+/* iPhone SE*/
 @media screen and (min-width: 375px), screen and (min-height: 667px) {
   ul li .content {
     width: 85%;
@@ -368,7 +367,7 @@ footer {
   }
 }
 
-/*Creando modelo especifico para Galaxy S20 Ultra*/
+/* Galaxy S20 Ultra*/
 @media screen and (min-width: 412px), screen and (min-height: 915px) {
   footer {
     font-size: 1rem;
@@ -378,8 +377,7 @@ footer {
   }
 }
 
-/*Creando modelo especifico para iPad Mini*/
-
+/* iPad Mini*/
 @media screen and (width: 768px), screen and (height: 1024px) {
   header h1 {
     font-size: 2.5rem;
@@ -395,7 +393,7 @@ footer {
   }
 }
 
-/*Creando modelo especifico para Nest Hub*/
+/* Nest Hub*/
 @media screen and (width: 1024px), screen and (height: 600px) {
   body {
     padding-left: 15%;
@@ -409,11 +407,11 @@ footer {
   }
   .front,
   .back {
-    font-size: 3.5rem; /* Ajuste del tamaño de fuente para cartas más grandes */
+    font-size: 3.5rem;
   }
 }
 
-/*Creando modelo especifico para Nest Hub Max*/
+/* Nest Hub Max*/
 @media screen and (width: 1280px), screen and (height: 800px) {
   body {
     padding-left: 15%;
