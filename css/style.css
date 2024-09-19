@@ -56,6 +56,7 @@ ul {
   gap: 10px;
   padding: 10px;
   height: 100%;
+  grid-area: content;
 }
 
 /* 16 cartas (4x4) */
@@ -95,8 +96,8 @@ div.stats {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   height: 100%;
+  gap: 0.5rem;
 }
 
 /*Tamaño de la carta*/
@@ -257,6 +258,10 @@ footer {
 
   .front {
     font-size: 3.5rem;
+  }
+  /* nuevos ajustes */
+  div.stats {
+    flex-direction: column;
   }
 }
 
