@@ -2,8 +2,8 @@
 
 //Variables globales
 export const globalVars = {
-  firstCard,
-  secondCard,
+  firstCard: null,
+  secondCard: null,
   notBingo: false,
   triesCounter: 0,
   errorCounter: 0,

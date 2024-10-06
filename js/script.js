@@ -26,7 +26,7 @@ export function startGame() {
 // Generamos cartas según el nivel
 function generateCards(numCards) {
   DOMvars.cardContainer.innerHTML = ""; //borra el valor de las cartas (si es que existe)
-  setCardGrid(numCards);
+  setCardGrid(numCards); // Ajusta la cuadrícula de cartas según el número de cartas
 
   // Ajusta el array según el nivel
   const pairedEmojis = globalVars.emojis
@@ -143,14 +143,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//Eliminar grids previos (si existiesen)
-DOMvars.cardContainer.classList.remove("grid-4x4", "grid-5x4", "grid-6x4");
+function setCardGrid(numCards) {
+  //Eliminar grids previos (si existiesen)
+  DOMvars.cardContainer.classList.remove("grid-4x4", "grid-5x4", "grid-6x4");
 
-//Asignar la clase correcta según el número de cartas
-if (numCards === 16) {
-  DOMvars.cardContainer.classList.add("grid-4x4"); //lama al css
-} else if (numCards === 20) {
-  DOMvars.cardContainer.classList.add("grid-5x4");
-} else if (numCards === 24) {
-  DOMvars.cardContainer.classList.add("grid-6x4");
+  //Asignar la clase correcta según el número de cartas
+  if (numCards === 16) {
+    DOMvars.cardContainer.classList.add("grid-4x4"); //lama al css
+  } else if (numCards === 20) {
+    DOMvars.cardContainer.classList.add("grid-5x4");
+  } else if (numCards === 24) {
+    DOMvars.cardContainer.classList.add("grid-6x4");
+  }
 }

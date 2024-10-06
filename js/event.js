@@ -4,6 +4,7 @@
 import { globalVars, DOMvars } from "./globals.js";
 import { resetBoard } from "./utils.js";
 import { updateDisplay, showPopup } from "./ui.js";
+import { startGame } from "./script.js";
 
 export function handleEventListeners() {
   DOMvars.closePopupButton.addEventListener("click", () => {
