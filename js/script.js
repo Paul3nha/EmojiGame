@@ -1,7 +1,7 @@
 "use strict";
 import { globalVars, DOMvars } from "./globals.js";
 import { shuffle, resetBoard } from "./utils.js";
-import { updateDisplay, showPopup } from "./ui.js";
+import { updateDisplay, showPopup, setCardGrid, initDropdown } from "./ui.js";
 import { handleEventListeners } from "./event.js";
 
 // Resetea contadores
@@ -118,41 +118,9 @@ function unflipCards() {
   }, 1000);
 }
 
-//Inicialización del juego al cargar la página
+// Inicialización del juego al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   startGame();
-  handleEventListeners(); // Inicia los eventos necesarios
-
-  //menú lateral izquierdo
-  const dropbtn = document.querySelector(".dropbtn");
-  const dropdownContent = document.querySelector(".dropdown-content");
-
-  //abrir y cerrar el menu
-  dropbtn.addEventListener("click", () => {
-    dropdownContent.style.display =
-      dropdownContent.style.display === "block" ? "none" : "block";
-  });
-
-  //cerramos el menú lateral izquierdo si se clicka fuera de él
-  window.addEventListener("click", (event) => {
-    if (!event.target.matches(".dropbtn")) {
-      if (dropdownContent.style.display === "block") {
-        dropdownContent.style.display = "none";
-      }
-    }
-  });
+  initDropdown(); //menu lateral
+  handleEventListeners(); // eventos necesarios
 });
-
-function setCardGrid(numCards) {
-  //Eliminar grids previos (si existiesen)
-  DOMvars.cardContainer.classList.remove("grid-4x4", "grid-5x4", "grid-6x4");
-
-  //Asignar la clase correcta según el número de cartas
-  if (numCards === 16) {
-    DOMvars.cardContainer.classList.add("grid-4x4"); //lama al css
-  } else if (numCards === 20) {
-    DOMvars.cardContainer.classList.add("grid-5x4");
-  } else if (numCards === 24) {
-    DOMvars.cardContainer.classList.add("grid-6x4");
-  }
-}

@@ -51,4 +51,9 @@ body a {
   text-decoration: none;
   padding: 0.25rem;
   margin: 0 auto;
+  position: fixed;
+  text-align: center;
+  left: 0;
+  bottom: 0;
+  width: 80%;
 }
